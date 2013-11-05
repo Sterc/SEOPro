@@ -9,19 +9,6 @@ Ext.extend(seoPro,Ext.Component,{
         seoPro.addKeywords();
         seoPro.addPanel();
 
-        if(MODx.config.seopro_help == 1){
-            var helpButton = new Ext.Button({
-                text: _('seopro.tips')
-                ,cls: 'x-btn-seopro'
-                // ,iconCls: 'seopro-tips'
-                ,handler: function(btn, e){
-                    seoPro.showTips(btn, e);
-                }
-            })
-            Ext.getCmp('modx-action-buttons').add(helpButton);
-            Ext.getCmp('modx-action-buttons').doLayout();
-        }
-
         Ext.each(seoPro.config.fields.split(','), function(field) {
             seoPro.addCounter(field);
             if(field != 'alias'){
@@ -186,28 +173,7 @@ Ext.extend(seoPro,Ext.Component,{
         }
 
     }
-    ,showTips: function(btn,e){
-        //Ext.Msg.minWidth = 480;
-        //Ext.Msg.alert(_('seopro.tips'), _('seopro.tips.content'));
-        new Ext.Window({
-            title : "iframe",
-            modal: true,
-            width : 600,
-            height: 500,
-            //layout : 'fit',
-            items : [{
-                xtype : "component",
-                width: 594,
-                height: 449,
-                autoEl : {
-                    tag : "iframe",
-                    src : MODx.config.seopro_helpurl,
-                    width: 594,
-                    height: 449,
-                }
-            }]
-        }).show();
-    }
+
 
 });
 Ext.reg('seopro',seoPro);
