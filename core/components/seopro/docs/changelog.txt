@@ -1,0 +1,5 @@
+Changelog for seoPro.
+
+
+seoPro 2.0.3
+==============

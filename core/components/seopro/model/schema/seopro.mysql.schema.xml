@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model package="seopro" baseClass="xPDOObject" platform="mysql" defaultEngine="MyISAM" phpdoc-package="seopro">
+    <object class="seoKeywords" table="seopro_keywords" extends="xPDOSimpleObject">
+        <field key="resource" dbtype="integer" precision="10" phptype="int" null="false" default="" />
+        <field key="keywords" dbtype="text" phptype="text" null="true" default="" />        
+    </object>    
+</model>
