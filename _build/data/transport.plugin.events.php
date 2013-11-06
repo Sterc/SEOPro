@@ -23,5 +23,11 @@ $events['onResourceDuplicate']->fromArray(array(
     'priority' => 0,
     'propertyset' => 0,
 ),'',true,true);
+$events['OnParseDocument']= $modx->newObject('modPluginEvent');
+$events['OnParseDocument']->fromArray(array(
+    'event' => 'OnParseDocument',
+    'priority' => 0,
+    'propertyset' => 0,
+),'',true,true);
 
 return $events;
