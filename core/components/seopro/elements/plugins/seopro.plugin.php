@@ -32,9 +32,11 @@ switch($modx->event->name) {
 		if($_REQUEST['id'] == $modx->getOption('site_start')){
 			$fields = 'pagetitle,longtitle,description';
 		}
+		$config = $seoPro->config;
+		unset($config['resource']);
 		$modx->regClientStartupHTMLBlock('<script type="text/javascript">
 			Ext.onReady(function() {
-				seoPro.config = '.$modx->toJSON($seoPro->config).';
+				seoPro.config = '.$modx->toJSON($config).';
 				seoPro.config.record = "'.$keywords.'";
 				seoPro.config.values = {};
 				seoPro.config.fields = "'.$fields.'";
