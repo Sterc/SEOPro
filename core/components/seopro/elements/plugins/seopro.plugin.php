@@ -65,16 +65,12 @@ switch($modx->event->name) {
 		$newSeoKeywords->set('resource', $newResource->get('id'));
 		$newSeoKeywords->save();
     break;
-    case 'OnHandleRequest':
-	    if($modx->context->get('key') != "mgr"){
-			$resource = $modx->getObject('modResource', array('uri' => $_GET['q']));
-            if($resource){
-            	$seoKeywords = $modx->getObject('seoKeywords', array('resource' => $resource->get('id')));
-				if ($seoKeywords) {
-					$keyWords = $seoKeywords->get('keywords');
-					$modx->setPlaceholder('keywords', $keyWords);
-				}
+    case 'OnParseDocument':
+            if($modx->context->get('key') == "mgr") break;
+            $seoKeywords = $modx->getObject('seoKeywords', array('resource' => $modx->resource->get('id')));
+            if ($seoKeywords) {
+                $keyWords = $seoKeywords->get('keywords');
+                $modx->setPlaceholder('keywords', $keyWords);
             }
-	    }
     break;
 }
