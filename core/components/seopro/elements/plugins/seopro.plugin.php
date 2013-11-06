@@ -48,7 +48,7 @@ switch($modx->event->name) {
 		$modx->regClientStartupScript($seoPro->config['assetsUrl'].'js/mgr/seopro.js');
 		$modx->regClientStartupScript($seoPro->config['assetsUrl'].'js/mgr/resource.js');
     break;
-    
+
     case 'OnDocFormSave':
 		$seoKeywords = $modx->getObject('seoKeywords', array('resource' => $_POST['id']));
 		if(!$seoKeywords) $seoKeywords = $modx->newObject('seoKeywords', array('resource' => $_POST['id']));
@@ -64,5 +64,17 @@ switch($modx->event->name) {
 		$newSeoKeywords->fromArray($seoKeywords->toArray());
 		$newSeoKeywords->set('resource', $newResource->get('id'));
 		$newSeoKeywords->save();
+    break;
+    case 'OnHandleRequest':
+	    if($modx->context->get('key') != "mgr"){
+			$resource = $modx->getObject('modResource', array('uri' => $_GET['q']));
+            if($resource){
+            	$seoKeywords = $modx->getObject('seoKeywords', array('resource' => $resource->get('id')));
+				if ($seoKeywords) {
+					$keyWords = $seoKeywords->get('keywords');
+					$modx->setPlaceholder('keywords', $keyWords);
+				}
+            }
+	    }
     break;
 }
