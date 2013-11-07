@@ -1,4 +1,4 @@
-## SEOTab
+## SEOPro
 ========
 Author: Wieger Sloot at Sterc.nl <modx@sterc.nl>
 
