@@ -23,5 +23,12 @@ $settings = array();
 //     'area' => 'general',
 // ),'',true,true);
 
-
+$settings['seopro.delimiter']= $modx->newObject('modSystemSetting');
+$settings['seopro.delimiter']->fromArray(array(
+    'key' => 'seopro.delimiter',
+     'value' => '|',
+     'xtype' => 'textfield',
+    'namespace' => 'seopro',
+     'area' => 'general',
+),'',true,true);
 return $settings;

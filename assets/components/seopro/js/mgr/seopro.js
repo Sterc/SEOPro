@@ -156,12 +156,14 @@ Ext.extend(seoPro,Ext.Component,{
                 }else{
                     var title = seoPro.config.values['longtitle'];
                 }
-                Ext.get('seopro-google-title').dom.innerHTML = title+' | '+MODx.config.site_name;
+                var delimiter =  MODx.isEmpty(MODx.config['seopro.delimiter'] )?'|':MODx.config['seopro.delimiter'];
+                
+                Ext.get('seopro-google-title').dom.innerHTML = title+ ' '+delimiter+' '+MODx.config.site_name;
             break;
             case 'description':
             case 'introtext':
                 if(seoPro.config.values['description'] == '' || seoPro.config.values['description'] === 'undefined'){
-                    var description = 'Vul uw META description.';
+                    var description = _('seopro.emptymetadescription');
                 }else{
                     var description = seoPro.config.values['description'];
                 }
