@@ -16,11 +16,12 @@ define('PKG_NAME','seoPro');
 define('PKG_NAME_LOWER',strtolower(PKG_NAME));
 define('PKG_NAMESPACE',strtolower(PKG_NAME));
 
-define('PKG_VERSION','2.0.8');
-define('PKG_RELEASE','pl');
+define('PKG_VERSION','2.0.0');
+define('PKG_RELEASE','beta');
 
 /* define sources */
 $root = dirname(dirname(__FILE__)).'/';
+
 $sources = array(
     'root' => $root,
     'build' => $root . '_build/',
@@ -97,22 +98,22 @@ $vehicle->resolve('php',array(
 $builder->putVehicle($vehicle);
 
 /* load system settings */
-// $settings = include $sources['data'].'transport.settings.php';
-// if (is_array($settings) && !empty($settings)) {
-//     $attributes= array(
-//         xPDOTransport::UNIQUE_KEY => 'key',
-//         xPDOTransport::PRESERVE_KEYS => true,
-//         xPDOTransport::UPDATE_OBJECT => false,
-//     );
-//     foreach ($settings as $setting) {
-//         $vehicle = $builder->createVehicle($setting,$attributes);
-//         $builder->putVehicle($vehicle);
-//     }
-//     $modx->log(xPDO::LOG_LEVEL_INFO,'Packaged in '.count($settings).' System Settings.'); flush();
-// } else {
-//     $modx->log(xPDO::LOG_LEVEL_ERROR,'Could not package System Settings.');
-// }
-// unset($settings,$setting);
+ $settings = include $sources['data'].'transport.settings.php';
+ if (is_array($settings) && !empty($settings)) {
+     $attributes= array(
+         xPDOTransport::UNIQUE_KEY => 'key',
+         xPDOTransport::PRESERVE_KEYS => true,
+         xPDOTransport::UPDATE_OBJECT => false,
+     );
+     foreach ($settings as $setting) {
+         $vehicle = $builder->createVehicle($setting,$attributes);
+         $builder->putVehicle($vehicle);
+     }
+     $modx->log(xPDO::LOG_LEVEL_INFO,'Packaged in '.count($settings).' System Settings.'); flush();
+ } else {
+     $modx->log(xPDO::LOG_LEVEL_ERROR,'Could not package System Settings.');
+ }
+ unset($settings,$setting);
 
 
 /* now pack in the license file, readme and setup options */

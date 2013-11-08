@@ -1,5 +1,8 @@
 Changelog for seoPro.
 
 
-seoPro 2.0.3
+seoPro 2.0.0
 ==============
+- Added several lexicons
+- Added system setting for divider
+- 
