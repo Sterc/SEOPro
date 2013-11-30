@@ -70,7 +70,7 @@
 	padding-left: 25px;
 	background: url(../img/thumb-down.png) no-repeat 6px 3px #FBFBFB;
 }
-#seopro-resource-alias .seopro-counter-chars{
+#seopro-resource-alias .seopro-counter-chars, #seopro-resource-menutitle .seopro-counter-chars{
 	display: none;
 }
 .seopro-counter-chars{
