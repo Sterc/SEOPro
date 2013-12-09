@@ -68,7 +68,7 @@
 .seopro-counter-keywords.red{
 	background: url(../img/thumb-down.png) no-repeat 10px 4px #FBFBFB;
 }
-#seopro-resource-alias .seopro-counter-chars{
+#seopro-resource-alias .seopro-counter-chars, #seopro-resource-menutitle .seopro-counter-chars{
 	display: none;
 }
 .seopro-counter-keywords{

@@ -28,7 +28,7 @@ switch($modx->event->name) {
 				$url = $modx->getOption('site_url').'<span id=\"seopro-replace-alias\"></span>';
 			}
 		}
-		$fields = 'pagetitle,longtitle,description,alias';
+		$fields = 'pagetitle,longtitle,description,alias,menutitle';
 		if($_REQUEST['id'] == $modx->getOption('site_start')){
 			$fields = 'pagetitle,longtitle,description';
 		}
@@ -40,7 +40,7 @@ switch($modx->event->name) {
 				seoPro.config.record = "'.$keywords.'";
 				seoPro.config.values = {};
 				seoPro.config.fields = "'.$fields.'";
-				seoPro.config.chars = '.$modx->toJSON(array('pagetitle' => 70, 'longtitle' => 70, 'description' => 155, 'alias' => 2023)).'
+				seoPro.config.chars = '.$modx->toJSON(array('pagetitle' => 70, 'longtitle' => 70, 'description' => 155, 'alias' => 2023, 'menutitle' => 2023)).'
 				seoPro.config.url = "'.$url.'";
 			});
 		</script>');

@@ -11,7 +11,7 @@ Ext.extend(seoPro,Ext.Component,{
 
         Ext.each(seoPro.config.fields.split(','), function(field) {
             seoPro.addCounter(field);
-            if(field != 'alias'){
+            if(field != 'alias' && field != 'menutitle'){
                 seoPro.changePrevBox(field);
             }
         });
