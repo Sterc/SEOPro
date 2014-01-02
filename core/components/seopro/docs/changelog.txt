@@ -1,8 +1,14 @@
 Changelog for seoPro.
 
 
-seoPro 2.0.0
+seoPro 1.0.0 pl
 ==============
+- Initial Public Release
 - Added several lexicons
+-- Special thanks to
+--- DE: Christian Seel
+--- FR: Romain Tripault
+--- IT: Alberto Rossi
+--- RU: Ilya Ershov
 - Added system setting for divider
-- 
+- Added system setting for field where seoPro should trigger on.

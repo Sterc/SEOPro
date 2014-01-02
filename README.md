@@ -1,6 +1,7 @@
 ## SEOPro
 
 Author: Wieger Sloot at Sterc.nl <modx@sterc.nl>
+Support: Friso Speulman at Sterc.nl <friso@sterc.nl>
 
 ### Description
 MODX SEO Pro is a MODX package that helps you when performing Search Engine Optimization (SEO) in MODX. It enables you to:

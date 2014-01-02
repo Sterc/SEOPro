@@ -16,8 +16,8 @@ define('PKG_NAME','seoPro');
 define('PKG_NAME_LOWER',strtolower(PKG_NAME));
 define('PKG_NAMESPACE',strtolower(PKG_NAME));
 
-define('PKG_VERSION','2.0.0');
-define('PKG_RELEASE','beta');
+define('PKG_VERSION','1.0.0');
+define('PKG_RELEASE','pl');
 
 /* define sources */
 $root = dirname(dirname(__FILE__)).'/';
@@ -51,6 +51,8 @@ $modx->loadClass('transport.modPackageBuilder','',false, true);
 $builder = new modPackageBuilder($modx);
 $builder->createPackage(PKG_NAMESPACE,PKG_VERSION,PKG_RELEASE);
 $builder->registerNamespace(PKG_NAMESPACE,false,true,'{core_path}components/'.PKG_NAMESPACE.'/');
+
+
 
 /* create the plugin object */
 $plugin= $modx->newObject('modPlugin');

@@ -10,3 +10,5 @@ $_lang['seopro.emptymetadescription']='<i>Fill in a description before an previe
 
 $_lang['setting_seopro.delimiter'] = 'Delimiter in Google preview.';
 $_lang['setting_seopro.delimiter_desc'] = 'Delimiter between Title and Sitename';
+$_lang['setting_seopro.fields'] = 'Fields where SEO Pro will work on';
+$_lang['setting_seopro.fields_desc'] = 'Only change these if you what you are doing. Default value:pagetitle,longtitle,description,alias,menutitle. Will not work on the content field';

@@ -10,43 +10,58 @@ if (!($seoPro instanceof seoPro)) return '';
 
 switch($modx->event->name) {
     case 'OnDocFormRender':
-    	$keywords = '';
-    	//$modx->lexicon->load('seopro:default');
-    	$modx->controller->addLexiconTopic('seopro:default');
-    	if($_REQUEST['id'] && $_REQUEST['a'] == 30){
-			$url = $modx->makeUrl($resource->get('id'), '', '', 'full');
-			$url = str_replace($resource->get('alias'), '<span id=\"seopro-replace-alias\">'.$resource->get('alias').'</span>', $url);
-			$seoKeywords = $modx->getObject('seoKeywords', array('resource' => $resource->get('id')));
-			if($seoKeywords){
-				$keywords = $seoKeywords->get('keywords');
-			}
-		}elseif($_REQUEST['a'] == 55){
-			if($_REQUEST['id']){
-				$url = $modx->makeUrl($_REQUEST['id'], '', '', 'full');
-				$url .= '/<span id=\"seopro-replace-alias\"></span>';
-			}else{
-				$url = $modx->getOption('site_url').'<span id=\"seopro-replace-alias\"></span>';
-			}
+   $currClassKey = $resource->get('class_key');
+		$strFields = $modx->getOption('seopro.fields',null,'pagetitle:70,longtitle:70,description:155,alias:2023,menutitle:2023');
+		$arrFields = array();
+		if(is_array(explode(',',$strFields))){
+  		foreach(explode(',',$strFields) as $field){
+	  		list($fieldName,$fieldCount) = explode(':',$field);
+	  		$arrFields[$fieldName] = $fieldCount;
+	  	}
+		}else{
+  		return '';
 		}
-		$fields = 'pagetitle,longtitle,description,alias,menutitle';
-		if($_REQUEST['id'] == $modx->getOption('site_start')){
-			$fields = 'pagetitle,longtitle,description';
+		
+	$keywords = '';
+	$modx->controller->addLexiconTopic('seopro:default');
+	if($_REQUEST['id'] && $_REQUEST['a'] == 30){
+		$url = $modx->makeUrl($resource->get('id'), '', '', 'full');
+		$url = str_replace($resource->get('alias'), '<span id=\"seopro-replace-alias\">'.$resource->get('alias').'</span>', $url);
+		$seoKeywords = $modx->getObject('seoKeywords', array('resource' => $resource->get('id')));
+		if($seoKeywords){
+			$keywords = $seoKeywords->get('keywords');
 		}
-		$config = $seoPro->config;
-		unset($config['resource']);
-		$modx->regClientStartupHTMLBlock('<script type="text/javascript">
-			Ext.onReady(function() {
-				seoPro.config = '.$modx->toJSON($config).';
-				seoPro.config.record = "'.$keywords.'";
-				seoPro.config.values = {};
-				seoPro.config.fields = "'.$fields.'";
-				seoPro.config.chars = '.$modx->toJSON(array('pagetitle' => 70, 'longtitle' => 70, 'description' => 155, 'alias' => 2023, 'menutitle' => 2023)).'
-				seoPro.config.url = "'.$url.'";
-			});
-		</script>');
-		$modx->regClientCSS($seoPro->config['assetsUrl'].'css/mgr.css');
-		$modx->regClientStartupScript($seoPro->config['assetsUrl'].'js/mgr/seopro.js');
-		$modx->regClientStartupScript($seoPro->config['assetsUrl'].'js/mgr/resource.js');
+	}elseif($_REQUEST['a'] == 55){
+		if($_REQUEST['id']){
+			$url = $modx->makeUrl($_REQUEST['id'], '', '', 'full');
+			$url .= '/<span id=\"seopro-replace-alias\"></span>';
+		}else{
+			$url = $modx->getOption('site_url').'<span id=\"seopro-replace-alias\"></span>';
+		}
+	}
+	
+	if($_REQUEST['id'] == $modx->getOption('site_start')){
+		unset($arrFields['alias']);
+		unset($arrFields['menutitle']);
+	}
+
+
+	$config = $seoPro->config;
+	unset($config['resource']);
+	$modx->regClientStartupHTMLBlock('<script type="text/javascript">
+		Ext.onReady(function() {
+			seoPro.config = '.$modx->toJSON($config).';
+			seoPro.config.record = "'.$keywords.'";
+			seoPro.config.values = {};
+			seoPro.config.fields = "'.implode(",",array_keys($arrFields)).'";
+			seoPro.config.chars = '.$modx->toJSON($arrFields).'
+			seoPro.config.url = "'.$url.'";
+		});
+	</script>');
+	$modx->regClientCSS($seoPro->config['assetsUrl'].'css/mgr.css');
+	$modx->regClientStartupScript($seoPro->config['assetsUrl'].'js/mgr/seopro.js');
+	$modx->regClientStartupScript($seoPro->config['assetsUrl'].'js/mgr/resource.js');
+	
     break;
 
     case 'OnDocFormSave':

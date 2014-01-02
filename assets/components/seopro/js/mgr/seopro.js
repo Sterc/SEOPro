@@ -10,6 +10,7 @@ Ext.extend(seoPro,Ext.Component,{
         seoPro.addPanel();
 
         Ext.each(seoPro.config.fields.split(','), function(field) {
+     
             seoPro.addCounter(field);
             if(field != 'alias' && field != 'menutitle'){
                 seoPro.changePrevBox(field);
@@ -21,20 +22,22 @@ Ext.extend(seoPro,Ext.Component,{
     }
     ,addCounter: function(field, chars){
     	var Field = Ext.getCmp('modx-resource-'+field);
-        seoPro.config.values[field] = Field.getValue();
-    	Field.on('keyup', function() {
-            seoPro.config.values[field] = Field.getValue();
-            seoPro.count(field)
-            seoPro.changePrevBox(field)
-		});
-        Ext.get('x-form-el-modx-resource-' + field).createChild({
-            tag: 'div'
-            ,id: 'seopro-resource-'+field
-            ,class: 'seopro-counter'
-            ,html: '<span class="seopro-counter-wrap seopro-counter-keywords" id="seopro-counter-keywords-' + field + '" title="'+_('seopro.keywords')+'"><strong>'+_('seopro.keywords')+'</strong></span>\
-                    <span class="seopro-counter-wrap seopro-counter-chars" id="seopro-counter-chars-' + field + '" title="'+_('seopro.characters.allowed')+'"><strong>'+_('seopro.characters')+': </strong><span class="current" id="seopro-counter-chars-' + field + '-current">1</span>/<span class="allowed" id="seopro-counter-chars-' + field + '-allowed">'+seoPro.config.chars[field]+'</span></span>'
-        });
-        seoPro.count(field);
+    	if(Field){
+	        seoPro.config.values[field] = Field.getValue();
+	    	Field.on('keyup', function() {
+	            seoPro.config.values[field] = Field.getValue();
+	            seoPro.count(field)
+	            seoPro.changePrevBox(field)
+			});
+	        Ext.get('x-form-el-modx-resource-' + field).createChild({
+	            tag: 'div'
+	            ,id: 'seopro-resource-'+field
+	            ,class: 'seopro-counter'
+	            ,html: '<span class="seopro-counter-wrap seopro-counter-keywords" id="seopro-counter-keywords-' + field + '" title="'+_('seopro.keywords')+'"><strong>'+_('seopro.keywords')+'</strong></span>\
+	                    <span class="seopro-counter-wrap seopro-counter-chars" id="seopro-counter-chars-' + field + '" title="'+_('seopro.characters.allowed')+'"><strong>'+_('seopro.characters')+': </strong><span class="current" id="seopro-counter-chars-' + field + '-current">1</span>/<span class="allowed" id="seopro-counter-chars-' + field + '-allowed">'+seoPro.config.chars[field]+'</span></span>'
+	        });
+	        seoPro.count(field);
+        }
     }
     ,addKeywords: function(){
         var fp = Ext.getCmp('modx-resource-main-left');
@@ -49,7 +52,10 @@ Ext.extend(seoPro,Ext.Component,{
             ,listeners: { 'keyup': function(){
                 MODx.fireResourceFormChange();
                 Ext.each(seoPro.config.fields.split(','), function(field) {
+                var Field = Ext.getCmp('modx-resource-'+field);
+    	if(Field){
                     seoPro.count(field);
+                    }
                 });
             }}
         });
@@ -77,7 +83,10 @@ Ext.extend(seoPro,Ext.Component,{
                 ,bodyStyle: 'padding: 10px;'
                 ,border: false
                 ,autoHeight: true
-                ,items: [{
+                ,items: [{xtype:'box',
+	                html:'seoPro by Sterc ',
+	                style:'background-color: #fbfbfb; text-align:right;font-size:x-small; float:right;display:block; color:#999;',
+                },{
                     xtype: 'box',
                     id: 'seopro-google-title',
                     //height: 20,
