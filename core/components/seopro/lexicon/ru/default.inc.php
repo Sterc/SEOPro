@@ -5,7 +5,7 @@ $_lang['seopro.characters.allowed'] = 'Разрешено символов';
 $_lang['seopro.tips'] = 'SEO-PRO Советы!';
 $_lang['seopro.focuskeywords'] = 'Фокусные фразы';
 $_lang['seopro.focuskeywords_desc'] = 'Разделённые запятой';
-$_lang['seopro.prevbox'] = 'Как это будет выглядеть в Google?';
+$_lang['seopro.prevbox'] = 'Как эта страница будет выглядеть в поисковой выдаче Google:';
 $_lang['seopro.emptymetadescription']='<i>Для предварительного просмотра заполните поле Описание</i>';
 
 $_lang['setting_seopro.delimiter'] = 'Разделитель в сниппете Google';
