@@ -39,4 +39,12 @@ $settings['seopro.fields']->fromArray(array(
     'namespace' => 'seopro',
      'area' => 'general',
 ),'',true,true);
+$settings['seopro.version']= $modx->newObject('modSystemSetting');
+$settings['seopro.version']->fromArray(array(
+    'key' => 'seopro.version',
+     'value' => PKG_VERSION,
+     'xtype' => 'textfield',
+    'namespace' => 'seopro',
+     'area' => 'general',
+),'',true,true);
 return $settings;

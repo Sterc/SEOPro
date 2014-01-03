@@ -58,7 +58,7 @@ $builder->registerNamespace(PKG_NAMESPACE,false,true,'{core_path}components/'.PK
 $plugin= $modx->newObject('modPlugin');
 $plugin->set('id',1);
 $plugin->set('name', PKG_NAME);
-$plugin->set('description', PKG_NAME.' '.PKG_VERSION.'-'.PKG_RELEASE.' plugin for MODx Revolution');
+$plugin->set('description', PKG_NAME.' '.PKG_VERSION.'-'.PKG_RELEASE.' . SEO optimizing plugin for MODx Revolution');
 $plugin->set('plugincode', getSnippetContent($sources['plugins'] . '/seopro.plugin.php'));
 $plugin->set('category', 0);
 

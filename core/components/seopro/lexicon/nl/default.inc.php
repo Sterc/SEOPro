@@ -10,3 +10,9 @@ $_lang['seopro.emptymetadescription']='<i>Vul een omschrijving in zodat een prev
 
 $_lang['setting_seopro.delimiter'] = 'Delimiter in Google preview.';
 $_lang['setting_seopro.delimiter_desc'] = 'Delimiter tussen  Titel en sitenaam';
+$_lang['setting_seopro.fields'] = 'Velden waarop SEO pro zal werken ';
+$_lang['setting_seopro.fields_desc'] = 'Verander deze gegevens alleen als je weet wat je doet. Standaard waarde :pagetitle,longtitle,description,alias,menutitle. SEO Pro werkt niet op het content veld';
+$_lang['setting_seopro.version'] ='Versie nummer';
+$_lang['setting_seopro.version_desc']= 'Huidige '.$_lang['setting_seopro.version'];
+$_lang['setting_seopro.allowbranding'] ='Toestaan van Sterc Branding in de head';
+$_lang['setting_seopro.allowbranding_desc']= 'Give us some love...';
