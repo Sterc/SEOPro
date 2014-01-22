@@ -23,9 +23,9 @@ $events['onResourceDuplicate']->fromArray(array(
     'priority' => 0,
     'propertyset' => 0,
 ),'',true,true);
-$events['OnParseDocument']= $modx->newObject('modPluginEvent');
-$events['OnParseDocument']->fromArray(array(
-    'event' => 'OnParseDocument',
+$events['OnLoadWebDocument']= $modx->newObject('modPluginEvent');
+$events['OnLoadWebDocument']->fromArray(array(
+    'event' => 'OnLoadWebDocument',
     'priority' => 0,
     'propertyset' => 0,
 ),'',true,true);
