@@ -85,7 +85,7 @@ switch ($modx->event->name) {
     $newSeoKeywords->save();
     break;
     
-  case 'OnParseDocument':
+  case 'OnLoadWebDocument':
     if ($modx->context->get('key') == "mgr") {
       break;
     }
