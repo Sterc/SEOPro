@@ -16,11 +16,12 @@ define('PKG_NAME','seoPro');
 define('PKG_NAME_LOWER',strtolower(PKG_NAME));
 define('PKG_NAMESPACE',strtolower(PKG_NAME));
 
-define('PKG_VERSION','2.0.7');
+define('PKG_VERSION','1.0.2');
 define('PKG_RELEASE','pl');
 
 /* define sources */
 $root = dirname(dirname(__FILE__)).'/';
+
 $sources = array(
     'root' => $root,
     'build' => $root . '_build/',
@@ -51,11 +52,13 @@ $builder = new modPackageBuilder($modx);
 $builder->createPackage(PKG_NAMESPACE,PKG_VERSION,PKG_RELEASE);
 $builder->registerNamespace(PKG_NAMESPACE,false,true,'{core_path}components/'.PKG_NAMESPACE.'/');
 
+
+
 /* create the plugin object */
 $plugin= $modx->newObject('modPlugin');
 $plugin->set('id',1);
 $plugin->set('name', PKG_NAME);
-$plugin->set('description', PKG_NAME.' '.PKG_VERSION.'-'.PKG_RELEASE.' plugin for MODx Revolution');
+$plugin->set('description', PKG_NAME.' '.PKG_VERSION.'-'.PKG_RELEASE.' . SEO optimizing plugin for MODx Revolution');
 $plugin->set('plugincode', getSnippetContent($sources['plugins'] . '/seopro.plugin.php'));
 $plugin->set('category', 0);
 
@@ -97,22 +100,22 @@ $vehicle->resolve('php',array(
 $builder->putVehicle($vehicle);
 
 /* load system settings */
-// $settings = include $sources['data'].'transport.settings.php';
-// if (is_array($settings) && !empty($settings)) {
-//     $attributes= array(
-//         xPDOTransport::UNIQUE_KEY => 'key',
-//         xPDOTransport::PRESERVE_KEYS => true,
-//         xPDOTransport::UPDATE_OBJECT => false,
-//     );
-//     foreach ($settings as $setting) {
-//         $vehicle = $builder->createVehicle($setting,$attributes);
-//         $builder->putVehicle($vehicle);
-//     }
-//     $modx->log(xPDO::LOG_LEVEL_INFO,'Packaged in '.count($settings).' System Settings.'); flush();
-// } else {
-//     $modx->log(xPDO::LOG_LEVEL_ERROR,'Could not package System Settings.');
-// }
-// unset($settings,$setting);
+ $settings = include $sources['data'].'transport.settings.php';
+ if (is_array($settings) && !empty($settings)) {
+     $attributes= array(
+         xPDOTransport::UNIQUE_KEY => 'key',
+         xPDOTransport::PRESERVE_KEYS => true,
+         xPDOTransport::UPDATE_OBJECT => false,
+     );
+     foreach ($settings as $setting) {
+         $vehicle = $builder->createVehicle($setting,$attributes);
+         $builder->putVehicle($vehicle);
+     }
+     $modx->log(xPDO::LOG_LEVEL_INFO,'Packaged in '.count($settings).' System Settings.'); flush();
+ } else {
+     $modx->log(xPDO::LOG_LEVEL_ERROR,'Could not package System Settings.');
+ }
+ unset($settings,$setting);
 
 
 /* now pack in the license file, readme and setup options */
@@ -121,6 +124,9 @@ $builder->setPackageAttributes(array(
     'license' => file_get_contents($sources['docs'] . 'license.txt'),
     'readme' => file_get_contents($sources['docs'] . 'readme.txt'),
     'changelog' => file_get_contents($sources['docs'] . 'changelog.txt'),
+ 	'setup-options' => array(
+        'source' => $sources['build'].'_setup.options.php',
+    ),
 ));
 
 $modx->log(xPDO::LOG_LEVEL_INFO,'Zipping up package...'); flush();

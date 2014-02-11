@@ -16,11 +16,11 @@
 .seopro-counter-wrap{
 	background: #FBFBFB;
 	border: 1px #CDCDCD solid;
-	border-bottom-color: #FBFBFB;
+	border-bottom: none;
 	text-align: center;
 	border-radius: 8px 8px 0 0;
-	border-radius: 8px 8px 0 0;
-	padding: 0 10px;
+	padding: 4px 14px 0;
+	line-height: 17px;
 	float: left;
 	margin-left: 5px;
 }
@@ -63,21 +63,16 @@
 	color: #707070 !important;
 }
 .seopro-counter-keywords.green{
-	padding-left: 25px;
-	background: url(../img/thumb-up.png) no-repeat 6px 2px #FBFBFB;
+	background: url(../img/thumb-up.png) no-repeat 10px 3px #FBFBFB;
 }
 .seopro-counter-keywords.red{
-	padding-left: 25px;
-	background: url(../img/thumb-down.png) no-repeat 6px 3px #FBFBFB;
+	background: url(../img/thumb-down.png) no-repeat 10px 4px #FBFBFB;
 }
-#seopro-resource-alias .seopro-counter-chars{
+#seopro-resource-alias .seopro-counter-chars, #seopro-resource-menutitle .seopro-counter-chars{
 	display: none;
 }
-.seopro-counter-chars{
-	width: 120px;
-}
 .seopro-counter-keywords{
-	width: 70px;
+	padding-left: 30px;
 }
 .x-btn-seopro button{
 /*	background-image: url(../img/tips.png);

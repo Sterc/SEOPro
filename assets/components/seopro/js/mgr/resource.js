@@ -1,8 +1,3 @@
-Ext.onReady(function() {
-	if (!seoPro.config.loaded) {
-		seoPro.initialize();		
-	}
-});
 
 // seoPro.page.Home = function(config) {
 //     config = config || {};

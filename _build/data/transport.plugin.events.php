@@ -17,9 +17,15 @@ $events['OnDocFormSave']->fromArray(array(
     'priority' => 0,
     'propertyset' => 0,
 ),'',true,true);
-$events['onResourceDuplicate']= $modx->newObject('modPluginEvent');
-$events['onResourceDuplicate']->fromArray(array(
-    'event' => 'onResourceDuplicate',
+$events['OnResourceDuplicate']= $modx->newObject('modPluginEvent');
+$events['OnResourceDuplicate']->fromArray(array(
+    'event' => 'OnResourceDuplicate',
+    'priority' => 0,
+    'propertyset' => 0,
+),'',true,true);
+$events['OnLoadWebDocument']= $modx->newObject('modPluginEvent');
+$events['OnLoadWebDocument']->fromArray(array(
+    'event' => 'OnLoadWebDocument',
     'priority' => 0,
     'propertyset' => 0,
 ),'',true,true);
