@@ -16,8 +16,5 @@ $_lang['setting_seopro.version'] ='Versionnumber';
 $_lang['setting_seopro.version_desc']= 'Current '.$_lang['setting_seopro.version'];
 $_lang['setting_seopro.allowbranding'] =' Allow Sterc branding in head.';
 $_lang['setting_seopro.allowbranding_desc']= 'Give us some love...';
-<<<<<<< HEAD
 $_lang['setting_seopro.usesitename'] ='Show sitename in the Google Preview and place in the sitename [[+seoPro.title]]?';
 $_lang['setting_seopro.usesitename_desc']= 'If the value is NO the delimiter and sitename setting will be removed from the preview en seo title placeholder';
-=======
->>>>>>> d130a3b592bd720e7fdeddcfc94223b0350e938b

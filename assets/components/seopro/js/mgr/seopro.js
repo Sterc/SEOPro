@@ -157,21 +157,15 @@ Ext.extend(seoPro, Ext.Component, {
     switch (field) {
       case 'pagetitle':
       case 'longtitle':
-<<<<<<< HEAD
         var title,siteName;
         var delimiter = MODx.isEmpty(MODx.config['seopro.delimiter']) ? '|' : MODx.config['seopro.delimiter'];
         var siteNameToggle = MODx.isEmpty(MODx.config['seopro.delimiter']) ? '|' : MODx.config['seopro.delimiter'];
         var siteNameShow = MODx.isEmpty(MODx.config['seopro.usesitename']) ? false : true;
-=======
-        var title;
-        var delimiter = MODx.isEmpty(MODx.config['seopro.delimiter']) ? '|' : MODx.config['seopro.delimiter'];
->>>>>>> d130a3b592bd720e7fdeddcfc94223b0350e938b
         if (MODx.isEmpty(seoPro.config.values['longtitle'])) {
           title = seoPro.config.values['pagetitle'];
         } else {
           title = seoPro.config.values['longtitle'];
         }
-<<<<<<< HEAD
         
         if(siteNameShow){
 	        siteName =  ' ' + delimiter + ' ' + MODx.config.site_name;
@@ -179,9 +173,6 @@ Ext.extend(seoPro, Ext.Component, {
 	        siteName = ' ';
         }
         Ext.get('seopro-google-title').dom.innerHTML = title + siteName;
-=======
-        Ext.get('seopro-google-title').dom.innerHTML = title + ' ' + delimiter + ' ' + MODx.config.site_name;
->>>>>>> d130a3b592bd720e7fdeddcfc94223b0350e938b
         break;
       case 'description':
       case 'introtext':
@@ -206,7 +197,6 @@ Ext.extend(seoPro, Ext.Component, {
 });
 Ext.reg('seopro', seoPro);
 
-<<<<<<< HEAD
 seoPro = new seoPro();
 
 Ext.onReady(function() {
@@ -214,6 +204,3 @@ Ext.onReady(function() {
 		seoPro.initialize();		
 	}
 });
-=======
-seoPro = new seoPro();
->>>>>>> d130a3b592bd720e7fdeddcfc94223b0350e938b
