@@ -19,7 +19,7 @@ Install the package
 
 
 ### Using a TV for the keywords?
-Use this gist to convert the TV values to seoPro https://gist.github.com/hometownlegends/7751607
+Use this gist to convert the TV values to seoPro https://gist.github.com/frisospeulman/7751607
 
 
 ### Bugs and Features:
