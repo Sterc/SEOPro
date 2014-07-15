@@ -66,11 +66,13 @@ switch ($modx->event->name) {
 
   case 'OnDocFormSave':
     $seoKeywords = $modx->getObject('seoKeywords', array('resource' => $_POST['id']));
-    if (!$seoKeywords) {
+    if (!$seoKeywords && isset($_POST['id'])) {
       $seoKeywords = $modx->newObject('seoKeywords', array('resource' => $_POST['id']));
     }
-    $seoKeywords->set('keywords', trim($_POST['keywords'], ','));
-    $seoKeywords->save();
+    if($seoKeywords){
+      $seoKeywords->set('keywords', trim($_POST['keywords'], ','));
+      $seoKeywords->save();
+    }
     break;
 
   case 'onResourceDuplicate':
