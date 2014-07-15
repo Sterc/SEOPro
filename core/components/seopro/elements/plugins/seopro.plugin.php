@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The base seoPro snippet.
  *

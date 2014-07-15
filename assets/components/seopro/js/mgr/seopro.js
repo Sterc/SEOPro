@@ -130,8 +130,10 @@ Ext.extend(seoPro, Ext.Component, {
     var keywordCount = 0;
     Ext.each(Ext.get('seopro-keywords').getValue().split(','), function(keyword) {
       keyword = keyword.replace(/^\s+/, '').toLowerCase();
+
       if (keyword) {
-        var counter = Value.toLowerCase().match(new RegExp('\\b' + keyword + '\\b', 'g'));
+        var counter = Value.toLowerCase().match(new RegExp("(^|[ \s\n\r\t\.,'\(\"\+;!?:\-])" + keyword + "($|[ \s\n\r\t.,'\)\"\+!?:;\-])", 'gim'));
+        // var counter = Value.toLowerCase().match(new RegExp('\\b' + keyword + '\\b', 'g'));
         if (counter) {
           keywordCount = keywordCount + counter.length;
         }
@@ -166,7 +168,7 @@ Ext.extend(seoPro, Ext.Component, {
         } else {
           title = seoPro.config.values['longtitle'];
         }
-        
+
         if(siteNameShow){
 	        siteName =  ' ' + delimiter + ' ' + MODx.config.site_name;
         }else{
@@ -201,6 +203,6 @@ seoPro = new seoPro();
 
 Ext.onReady(function() {
 	if (!seoPro.config.loaded) {
-		seoPro.initialize();		
+		seoPro.initialize();
 	}
 });
