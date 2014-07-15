@@ -24,14 +24,14 @@ switch ($modx->event->name) {
 
     $keywords = '';
     $modx->controller->addLexiconTopic('seopro:default');
-    if ($_REQUEST['id'] && $_REQUEST['a'] == 30) {
+    if ($mode == 'upd') {
       $url = $modx->makeUrl($resource->get('id'), '', '', 'full');
       $url = str_replace($resource->get('alias'), '<span id=\"seopro-replace-alias\">' . $resource->get('alias') . '</span>', $url);
       $seoKeywords = $modx->getObject('seoKeywords', array('resource' => $resource->get('id')));
       if ($seoKeywords) {
         $keywords = $seoKeywords->get('keywords');
       }
-    } elseif ($_REQUEST['a'] == 55) {
+    } else {
       if ($_REQUEST['id']) {
         $url = $modx->makeUrl($_REQUEST['id'], '', '', 'full');
         $url .= '/<span id=\"seopro-replace-alias\"></span>';
