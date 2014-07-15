@@ -16,7 +16,7 @@ define('PKG_NAME','seoPro');
 define('PKG_NAME_LOWER',strtolower(PKG_NAME));
 define('PKG_NAMESPACE',strtolower(PKG_NAME));
 
-define('PKG_VERSION','1.0.2');
+define('PKG_VERSION','1.0.3');
 define('PKG_RELEASE','pl');
 
 /* define sources */
