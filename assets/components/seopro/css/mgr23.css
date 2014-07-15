@@ -1,0 +1,101 @@
+.seopro-panel{
+    background-color: #fff;
+    border: #e4e4e4 1px solid;
+    border-radius: 2px;
+    padding: 2px 3px;
+}
+.seopro-counter{
+    position: absolute;
+    z-index: 2;
+    top: -22px;
+    right: 0;
+    text-align: right;
+    font-size: 12px;
+    line-height: 20px;
+}
+.seopro-counter-wrap{
+	background: #FBFBFB;
+	border: 1px #CDCDCD solid;
+	border-bottom: none;
+	text-align: center;
+	border-radius: 8px 8px 0 0;
+	padding: 4px 14px 0;
+	line-height: 17px;
+	float: left;
+	margin-left: 5px;
+}
+
+.x-form-focus + .seopro-counter .seopro-counter-wrap{
+    background-color: white;
+    border-color:#658F1A;
+    border-bottom-color: white;
+}
+.x-form-item.x-tab-item{
+	position: relative;
+}
+#seopro-google-logo{
+	text-align: center;
+}
+#seopro-google-logo img{
+	width: 70%;
+}
+.x-form-label-top .x-form-item {
+	margin-top: 3px;
+}
+#seopro-google-title{
+    color: #1A0DAB;
+    font-size: 18px;
+    white-space: nowrap;
+    width: 520px;
+    font-family: arial, sans-serif;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+#seopro-google-url{
+    color: #006621;
+    margin-bottom: 1px;
+}
+
+#seopro-google-description{
+    font-size: 13px;
+    color: #545454;
+    line-height: 1.4;
+    word-wrap: break-word;
+    font-family: arial, sans-serif;
+}
+.seopro-counter .green{
+    color: #919191 !important;
+}
+.seopro-counter .red{
+    color: #707070 !important;
+}
+.seopro-counter-keywords.green{
+	background: url(../img/thumb-up.png) no-repeat 10px 3px #FBFBFB;
+}
+.seopro-counter-keywords.red{
+	background: url(../img/thumb-down.png) no-repeat 10px 4px #FBFBFB;
+}
+#seopro-resource-alias .seopro-counter-chars, #seopro-resource-menutitle .seopro-counter-chars{
+	display: none;
+}
+.seopro-counter-keywords{
+	padding-left: 30px;
+}
+.x-btn-seopro button{
+/*	background-image: url(../img/tips.png);
+	background-position: 0px 0px !important;*/
+	color:#ccc !important;
+	text-shadow:0 1px -1px #111 !important;
+}
+.x-btn-seopro button:hover{
+	color: #f2f2f2 !important;
+}
+.x-btn-seopro{
+	background:-webkit-gradient( linear,left bottom,left top,color-stop(0.32,#555),color-stop(0.69,#666),color-stop(0,#555) );
+	border:1px solid #1E1E1E;
+	margin-left: 10px;
+}
+.seopro-counter-chars.red {
+    color: #D80000 !important;
+}
