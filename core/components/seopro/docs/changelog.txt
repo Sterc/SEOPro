@@ -5,6 +5,7 @@ seoPro 1.0.3 pl
 - Fixed keyword count to work also with Cyrillic
 - Fixed empty NOT NULL field resource to NULL
 - Added styles for MODX 2.3, thanks to christianseel
+
 seoPro 1.0.2 pl
 ==============
 - Added system setting for to enabled/disabled sitename in preview and seoPro.title placeholder
