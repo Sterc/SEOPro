@@ -32,9 +32,9 @@
 }
 
 .x-form-focus + .seopro-counter .seopro-counter-wrap{
-    background-color: white;
+    background-color: #FBFBFB;
     border-color: #2d86b7;
-    border-bottom-color: white;
+    border-bottom-color: #FBFBFB;
 }
 
 .x-form-invalid + .seopro-counter .seopro-counter-wrap{
