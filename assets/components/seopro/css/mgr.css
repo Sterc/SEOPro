@@ -7,36 +7,29 @@
 .seopro-counter{
 	position: absolute;
 	z-index: 2;
-	top: -22px;
+	top: -21px;
 	right: 0;
 	text-align: right;
 	font-size: 12px;
 	line-height: 20px;
-	display: block;
 }
 .seopro-counter-wrap{
 	background: #FBFBFB;
-	border: 1px #e4e4e4 solid;
+	border: 1px #CDCDCD solid;
 	border-bottom: none;
 	text-align: center;
 	border-radius: 8px 8px 0 0;
 	padding: 4px 14px 0;
-	line-height: 18px;
+	line-height: 17px;
 	float: left;
 	margin-left: 5px;
-	display: block;
 }
 
 .x-form-focus + .seopro-counter .seopro-counter-wrap{
     background-color: white;
-    border-color: #2d86b7;
+    border-color:#658F1A;
     border-bottom-color: white;
 }
-
-.x-form-invalid + .seopro-counter .seopro-counter-wrap{
-	border-color: #be0000 !important;
-}
-
 .x-form-item.x-tab-item{
 	position: relative;
 }
@@ -96,11 +89,6 @@
 	border:1px solid #1E1E1E;
 	margin-left: 10px;
 }
-
-#modx-resource-pagetitle, #modx-resource-longtitle, #modx-resource-description, #modx-resource-alias, #modx-resource-menutitle {
-	border-top-right-radius: 0;
-}
-
 /*.x-btn-blue{
 	background:#4f93cf;
 	background:-moz-linear-gradient(center bottom,#4f93cf 0%,#9ccbea 100%) repeat scroll 0 0 transparent;
