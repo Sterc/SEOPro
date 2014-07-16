@@ -27,6 +27,10 @@
     display: block;
 }
 
+#modx-resource-pagetitle, #modx-resource-longtitle, #modx-resource-description, #modx-resource-alias, #modx-resource-menutitle {
+    border-top-right-radius: 0;
+}
+
 .x-form-focus + .seopro-counter .seopro-counter-wrap{
     background-color: white;
     border-color: #2d86b7;
