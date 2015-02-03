@@ -16,7 +16,9 @@ Ext.extend(seoPro, Ext.Component, {
       }
     });
     Ext.getCmp('modx-panel-resource').on('success', function() {
-      Ext.get('seopro-replace-alias').dom.innerHTML = this.record.alias;
+      if(Ext.get('seopro-replace-alias')) {
+        Ext.get('seopro-replace-alias').dom.innerHTML = this.record.alias;
+      }
     });
   },
   addCounter: function(field, chars) {
