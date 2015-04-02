@@ -10,45 +10,47 @@ if (!($seoPro instanceof seoPro))
 
 switch ($modx->event->name) {
   case 'OnDocFormRender':
-    $currClassKey = $resource->get('class_key');
-    $strFields = $modx->getOption('seopro.fields', null, 'pagetitle:70,longtitle:70,description:155,alias:2023,menutitle:2023');
-    $arrFields = array();
-    if (is_array(explode(',', $strFields))) {
-      foreach (explode(',', $strFields) as $field) {
-        list($fieldName, $fieldCount) = explode(':', $field);
-        $arrFields[$fieldName] = $fieldCount;
-      }
-    } else {
-      return '';
-    }
-
-    $keywords = '';
-    $modx->controller->addLexiconTopic('seopro:default');
-    if ($mode == 'upd') {
-      $url = $modx->makeUrl($resource->get('id'), '', '', 'full');
-      $url = str_replace($resource->get('alias'), '<span id=\"seopro-replace-alias\">' . $resource->get('alias') . '</span>', $url);
-      $seoKeywords = $modx->getObject('seoKeywords', array('resource' => $resource->get('id')));
-      if ($seoKeywords) {
-        $keywords = $seoKeywords->get('keywords');
-      }
-    } else {
-      if ($_REQUEST['id']) {
-        $url = $modx->makeUrl($_REQUEST['id'], '', '', 'full');
-        $url .= '/<span id=\"seopro-replace-alias\"></span>';
+    $disabledTemplates = explode(',', $modx->getOption('seopro.disabledtemplates', null, '0'));
+    if (!in_array((string) $resource->get('template'), $disabledTemplates)) {
+      $currClassKey = $resource->get('class_key');
+      $strFields = $modx->getOption('seopro.fields', null, 'pagetitle:70,longtitle:70,description:155,alias:2023,menutitle:2023');
+      $arrFields = array();
+      if (is_array(explode(',', $strFields))) {
+        foreach (explode(',', $strFields) as $field) {
+          list($fieldName, $fieldCount) = explode(':', $field);
+          $arrFields[$fieldName] = $fieldCount;
+        }
       } else {
-        $url = $modx->getOption('site_url') . '<span id=\"seopro-replace-alias\"></span>';
+        return '';
       }
-    }
 
-    if ($_REQUEST['id'] == $modx->getOption('site_start')) {
-      unset($arrFields['alias']);
-      unset($arrFields['menutitle']);
-    }
+      $keywords = '';
+      $modx->controller->addLexiconTopic('seopro:default');
+      if ($mode == 'upd') {
+        $url = $modx->makeUrl($resource->get('id'), '', '', 'full');
+        $url = str_replace($resource->get('alias'), '<span id=\"seopro-replace-alias\">' . $resource->get('alias') . '</span>', $url);
+        $seoKeywords = $modx->getObject('seoKeywords', array('resource' => $resource->get('id')));
+        if ($seoKeywords) {
+          $keywords = $seoKeywords->get('keywords');
+        }
+      } else {
+        if ($_REQUEST['id']) {
+          $url = $modx->makeUrl($_REQUEST['id'], '', '', 'full');
+          $url .= '/<span id=\"seopro-replace-alias\"></span>';
+        } else {
+          $url = $modx->getOption('site_url') . '<span id=\"seopro-replace-alias\"></span>';
+        }
+      }
+
+      if ($_REQUEST['id'] == $modx->getOption('site_start')) {
+        unset($arrFields['alias']);
+        unset($arrFields['menutitle']);
+      }
 
 
-    $config = $seoPro->config;
-    unset($config['resource']);
-    $modx->regClientStartupHTMLBlock('<script type="text/javascript">
+      $config = $seoPro->config;
+      unset($config['resource']);
+      $modx->regClientStartupHTMLBlock('<script type="text/javascript">
 		Ext.onReady(function() {
 			seoPro.config = ' . $modx->toJSON($config) . ';
 			seoPro.config.record = "' . $keywords . '";
@@ -59,16 +61,16 @@ switch ($modx->event->name) {
 		});
 	</script>');
 
-    /* include CSS and JS*/
-    $version = $modx->getVersionData();
-    if($version['version'] == 2 && $version['major_version'] == 3){
-     $modx->regClientCSS($seoPro->config['assetsUrl'] . 'css/mgr23.css');
-    }else{
-     $modx->regClientCSS($seoPro->config['assetsUrl'] . 'css/mgr.css');
+      /* include CSS and JS*/
+      $version = $modx->getVersionData();
+      if ($version['version'] == 2 && $version['major_version'] == 3) {
+        $modx->regClientCSS($seoPro->config['assetsUrl'] . 'css/mgr23.css');
+      } else {
+        $modx->regClientCSS($seoPro->config['assetsUrl'] . 'css/mgr.css');
+      }
+      $modx->regClientStartupScript($seoPro->config['assetsUrl'] . 'js/mgr/seopro.js??v=' . $modx->getOption('seopro.version', null, 'v1.0.0'));
+      $modx->regClientStartupScript($seoPro->config['assetsUrl'] . 'js/mgr/resource.js?v=' . $modx->getOption('seopro.version', null, 'v1.0.0'));
     }
-    $modx->regClientStartupScript($seoPro->config['assetsUrl'] . 'js/mgr/seopro.js??v=' . $modx->getOption('seopro.version', null, 'v1.0.0'));
-    $modx->regClientStartupScript($seoPro->config['assetsUrl'] . 'js/mgr/resource.js?v=' . $modx->getOption('seopro.version', null, 'v1.0.0'));
-
     break;
 
   case 'OnDocFormSave':
