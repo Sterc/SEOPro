@@ -9,13 +9,13 @@ if (!($seoPro instanceof seoPro))
   return '';
 
 $disabledTemplates = explode(',', $modx->getOption('seopro.disabledtemplates', null, '0'));
-$template = ($resource->get('template')) ? (string) $resource->get('template') : $_REQUEST['template'];
-if (in_array($template, $disabledTemplates)) {
-  return '';
-}
 
 switch ($modx->event->name) {
   case 'OnDocFormRender':
+    $template = ($resource->get('template')) ? (string)$resource->get('template') : (string)$_REQUEST['template'];
+    if (in_array($template, $disabledTemplates)) {
+      break;
+    }
     $currClassKey = $resource->get('class_key');
     $strFields = $modx->getOption('seopro.fields', null, 'pagetitle:70,longtitle:70,description:155,alias:2023,menutitle:2023');
     $arrFields = array();
@@ -78,6 +78,10 @@ switch ($modx->event->name) {
     break;
 
   case 'OnDocFormSave':
+    $template = ($resource->get('template')) ? (string)$resource->get('template') : (string)$_REQUEST['template'];
+    if (in_array($template, $disabledTemplates)) {
+      break;
+    }
     $seoKeywords = $modx->getObject('seoKeywords', array('resource' => $_POST['id']));
     if (!$seoKeywords && isset($_POST['id'])) {
       $seoKeywords = $modx->newObject('seoKeywords', array('resource' => $_POST['id']));
@@ -89,6 +93,10 @@ switch ($modx->event->name) {
     break;
 
   case 'onResourceDuplicate':
+    $template = ($resource->get('template')) ? (string)$resource->get('template') : (string)$_REQUEST['template'];
+    if (in_array($template, $disabledTemplates)) {
+      break;
+    }
     $seoKeywords = $modx->getObject('seoKeywords', array('resource' => $resource->get('id')));
     if (!$seoKeywords) {
       $seoKeywords = $modx->newObject('seoKeywords', array('resource' => $resource->get('id')));
@@ -101,6 +109,10 @@ switch ($modx->event->name) {
 
   case 'OnLoadWebDocument':
     if ($modx->context->get('key') == "mgr") {
+      break;
+    }
+    $template = ($modx->resource->get('template')) ? (string)$modx->resource->get('template') : (string)$_REQUEST['template'];
+    if (in_array($template, $disabledTemplates)) {
       break;
     }
     $seoKeywords = $modx->getObject('seoKeywords', array('resource' => $modx->resource->get('id')));
