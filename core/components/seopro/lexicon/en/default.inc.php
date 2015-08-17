@@ -18,3 +18,5 @@ $_lang['setting_seopro.allowbranding'] =' Allow Sterc branding in the <head>';
 $_lang['setting_seopro.allowbranding_desc']= 'Show us some love ;x';
 $_lang['setting_seopro.usesitename'] ='Display sitename in the Google Preview and add it to the SEO Pro title placeholder [[+seoPro.title]]?';
 $_lang['setting_seopro.usesitename_desc']= 'If this value is \'no\' the delimiter and sitename setting will be removed from the Google Preview AND SEO Pro title placeholder';
+$_lang['setting_seopro.disabledtemplates'] ='Diabled Templates';
+$_lang['setting_seopro.disabledtemplates_desc']= 'Comma separated list of disabled template IDs';
