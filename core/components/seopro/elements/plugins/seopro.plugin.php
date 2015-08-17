@@ -8,6 +8,12 @@ $seoPro = $modx->getService('seopro', 'seoPro', $modx->getOption('seopro.core_pa
 if (!($seoPro instanceof seoPro))
   return '';
 
+$disabledTemplates = explode(',', $modx->getOption('seopro.disabledtemplates', null, '0'));
+$template = ($resource->get('template')) ? (string) $resource->get('template') : $_REQUEST['template'];
+if (in_array($template, $disabledTemplates)) {
+  return '';
+}
+
 switch ($modx->event->name) {
   case 'OnDocFormRender':
     $currClassKey = $resource->get('class_key');
