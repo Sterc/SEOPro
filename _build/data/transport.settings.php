@@ -45,4 +45,12 @@ $settings['seopro.allowbranding']->fromArray(array(
     'namespace' => 'seopro',
      'area' => 'general',
 ),'',true,true);
+$settings['seopro.disabledtemplates']= $modx->newObject('modSystemSetting');
+$settings['seopro.disabledtemplates']->fromArray(array(
+    'key' => 'seopro.disabledtemplates',
+     'value' => '',
+     'xtype' => 'textfield',
+    'namespace' => 'seopro',
+     'area' => 'general',
+),'',true,true);
 return $settings;
