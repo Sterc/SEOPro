@@ -67,10 +67,10 @@ switch ($modx->event->name) {
 
     /* include CSS and JS*/
     $version = $modx->getVersionData();
-    if($version['version'] == 2 && $version['major_version'] == 3){
-     $modx->regClientCSS($seoPro->config['assetsUrl'] . 'css/mgr23.css');
-    }else{
+    if($version['version'] == 2 && $version['major_version'] == 2){
      $modx->regClientCSS($seoPro->config['assetsUrl'] . 'css/mgr.css');
+    }else{
+     $modx->regClientCSS($seoPro->config['assetsUrl'] . 'css/mgr23.css');
     }
     $modx->regClientStartupScript($seoPro->config['assetsUrl'] . 'js/mgr/seopro.js??v=' . $modx->getOption('seopro.version', null, 'v1.0.0'));
     $modx->regClientStartupScript($seoPro->config['assetsUrl'] . 'js/mgr/resource.js?v=' . $modx->getOption('seopro.version', null, 'v1.0.0'));
