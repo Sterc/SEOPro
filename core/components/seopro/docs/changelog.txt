@@ -1,5 +1,11 @@
 Changelog for seoPro.
 
+seoPro 1.0.4 pl
+==============
+- Saving keywords on save #29
+- FIX #39 alias error on homepage (friendly urls) @bartholomej
+- Added seopro.disabledtemplates option @Jako
+
 seoPro 1.0.3 pl
 ==============
 - Fixed keyword count to work also with Cyrillic
