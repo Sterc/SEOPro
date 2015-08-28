@@ -82,9 +82,9 @@ switch ($modx->event->name) {
     if (in_array($template, $disabledTemplates)) {
       break;
     }
-    $seoKeywords = $modx->getObject('seoKeywords', array('resource' => $_POST['id']));
-    if (!$seoKeywords && isset($_POST['id'])) {
-      $seoKeywords = $modx->newObject('seoKeywords', array('resource' => $_POST['id']));
+    $seoKeywords = $modx->getObject('seoKeywords', array('resource' => $resource->get('id')));
+    if (!$seoKeywords && isset($resource)) {
+      $seoKeywords = $modx->newObject('seoKeywords', array('resource' => $resource->get('id')));
     }
     if($seoKeywords){
       $seoKeywords->set('keywords', trim($_POST['keywords'], ','));
