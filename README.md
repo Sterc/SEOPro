@@ -1,7 +1,6 @@
 ## SEOPro
 
-Author: Wieger Sloot at Sterc.nl <modx@sterc.nl>
-Support: Friso Speulman at Sterc.nl <friso@sterc.nl>
+Author: Sterc <modx@sterc.nl>
 Version: 1.0.2
 
 ### Description
