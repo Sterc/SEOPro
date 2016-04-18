@@ -111,7 +111,7 @@ switch ($modx->event->name) {
     if ($modx->context->get('key') == "mgr") {
       break;
     }
-    $template = ($modx->resource->get('template')) ? (string)$modx->resource->get('template') : (string)$_REQUEST['template'];
+    $template = ($modx->resource->get('template')) ? (string)$modx->resource->get('template') : '';
     if (in_array($template, $disabledTemplates)) {
       break;
     }
