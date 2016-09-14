@@ -87,7 +87,11 @@ switch ($modx->event->name) {
       $seoKeywords = $modx->newObject('seoKeywords', array('resource' => $resource->get('id')));
     }
     if($seoKeywords){
-      $seoKeywords->set('keywords', trim($_POST['keywords'], ','));
+      if (isset($_POST['keywords'])){
+        $seoKeywords->set('keywords', trim($_POST['keywords'], ','));
+      } else {
+        $seoKeywords->set('keywords', '');  
+      }
       $seoKeywords->save();
     }
     break;
