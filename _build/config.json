@@ -63,8 +63,7 @@
     "resolver": {
       "after": [
         "setupoptions.resolver.php",
-        "stercextra.resolver.php",
-        "uninstall.resolver.php"
+        "stercextra.resolver.php"
       ]
     },
     "setupOptions":{
