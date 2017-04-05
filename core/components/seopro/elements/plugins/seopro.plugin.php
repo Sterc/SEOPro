@@ -14,7 +14,7 @@ $disabledTemplates = explode(',', $modx->getOption('seopro.disabledtemplates', n
 switch ($modx->event->name) {
     case 'OnDocFormRender':
         $template = ($resource->get('template')) ? (string)$resource->get('template') : (string)$_REQUEST['template'];
-        if (in_array($template, $disabledTemplates)) {
+        if (!empty($template) && in_array($template, $disabledTemplates)) {
             break;
         }
         $currClassKey = $resource->get('class_key');
