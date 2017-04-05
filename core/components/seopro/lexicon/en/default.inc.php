@@ -7,6 +7,7 @@ $_lang['seopro.focuskeywords'] = 'Focus keywords';
 $_lang['seopro.focuskeywords_desc'] = 'Enter your keywords comma-separated (example: table, chair)';
 $_lang['seopro.prevbox'] = 'Google Preview';
 $_lang['seopro.emptymetadescription']='<i>Please enter a description</i>';
+$_lang['seopro.branding_text']='This site is optimized with the Sterc seoPro plugin - https://github.com/Sterc/SEOPro.';
 
 $_lang['setting_seopro.delimiter'] = 'Delimiter in Google Preview.';
 $_lang['setting_seopro.delimiter_desc'] = 'Delimiter between Title and Sitename';

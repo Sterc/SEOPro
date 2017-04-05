@@ -5,8 +5,9 @@
  * @package seopro
  */
 $seoPro = $modx->getService('seopro', 'seoPro', $modx->getOption('seopro.core_path', null, $modx->getOption('core_path') . 'components/seopro/') . 'model/seopro/', $scriptProperties);
-if (!($seoPro instanceof seoPro))
+if (!($seoPro instanceof seoPro)) {
     return '';
+}
 
 $disabledTemplates = explode(',', $modx->getOption('seopro.disabledtemplates', null, '0'));
 
@@ -143,7 +144,8 @@ switch ($modx->event->name) {
         }
         $modx->setPlaceholder('seoPro.title', implode(" ", $seoProTitle));
         if ($siteBranding) {
-            $modx->regClientStartupHTMLBlock('<!-- This site is optimized with the Sterc seoPro plugin ' . $modx->getOption('seopro.version', null, 'v1.0.0') . ' - http://www.sterc.nl/modx/seopro -->');
+            $modx->lexicon->load('seopro:default');
+            $modx->regClientStartupHTMLBlock('<!-- ' . $modx->lexicon('seopro.branding_text') . '-->');
         }
         break;
 }
