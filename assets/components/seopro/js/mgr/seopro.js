@@ -6,6 +6,8 @@ Ext.extend(seoPro, Ext.Component, {
     page: {}, window: {}, grid: {}, tree: {}, panel: {}, combo: {}, config: {}, view: {},
     initialize: function() {
         seoPro.config.loaded = true;
+        seoPro.config.delimiter = MODx.isEmpty(MODx.config['seopro.delimiter']) ? '|' : MODx.config['seopro.delimiter'];
+        seoPro.config.siteNameShow = MODx.isEmpty(MODx.config['seopro.usesitename']) ? false : true;
         seoPro.addKeywords();
         seoPro.addPanel();
 
@@ -92,11 +94,7 @@ Ext.extend(seoPro, Ext.Component, {
                 bodyStyle: 'padding: 10px;',
                 border: false,
                 autoHeight: true,
-                items: [/*{
-                 xtype: 'box',
-                 html: 'seoPro by sterc.nl ',
-                 style: 'background-color: #fbfbfb; text-align:right;font-size:x-small; float:right;display:block; color:#999;'
-                 }, */{
+                items: [{
                     xtype: 'box',
                     id: 'seopro-google-title',
                     bodyStyle: 'background-color: #fbfbfb; ',
@@ -125,8 +123,8 @@ Ext.extend(seoPro, Ext.Component, {
         //var maxkeywords = Ext.get('seopro-counter-keywords-' + field + '-allowed').dom.innerHTML;
         var maxchars = Ext.get('seopro-counter-chars-' + field + '-allowed').dom.innerHTML;
         var charCount = Value.length;
-        if (field === 'pagetitle' || field === 'longtitle') {
-            var extra = ' | ' + MODx.config.site_name;
+        if (seoPro.config.siteNameShow && (field === 'pagetitle' || field === 'longtitle')) {
+            var extra = ' '+seoPro.config.delimiter+' ' + MODx.config.site_name;
             charCount = charCount + extra.length;
         }
         var keywordCount = 0;
@@ -162,18 +160,15 @@ Ext.extend(seoPro, Ext.Component, {
             case 'pagetitle':
             case 'longtitle':
                 var title,siteName;
-                var delimiter = MODx.isEmpty(MODx.config['seopro.delimiter']) ? '|' : MODx.config['seopro.delimiter'];
-                var siteNameToggle = MODx.isEmpty(MODx.config['seopro.delimiter']) ? '|' : MODx.config['seopro.delimiter'];
-                var siteNameShow = MODx.isEmpty(MODx.config['seopro.usesitename']) ? false : true;
                 if (MODx.isEmpty(seoPro.config.values['longtitle'])) {
                     title = seoPro.config.values['pagetitle'];
                 } else {
                     title = seoPro.config.values['longtitle'];
                 }
 
-                if(siteNameShow){
-                    siteName =  ' ' + delimiter + ' ' + MODx.config.site_name;
-                }else{
+                if(seoPro.config.siteNameShow){
+                    siteName =  ' ' + seoPro.config.delimiter + ' ' + MODx.config.site_name;
+                } else {
                     siteName = ' ';
                 }
                 Ext.get('seopro-google-title').dom.innerHTML = title + siteName;
