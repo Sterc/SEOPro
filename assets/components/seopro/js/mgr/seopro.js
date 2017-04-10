@@ -139,10 +139,16 @@ Ext.extend(seoPro, Ext.Component, {
                 }
             }
         });
-        //Ext.get('seopro-counter-keywords-' + field + '-current').dom.innerHTML = keywordCount;
         Ext.get('seopro-counter-chars-' + field + '-current').dom.innerHTML = charCount;
 
-        if (keywordCount > 0 && keywordCount < 5) {
+        var maxKeywords = MODx.isEmpty(MODx.config['seopro.max_keywords_title']) ? '4' : MODx.config['seopro.max_keywords_title'];
+        if (field === 'description') {
+            // use different limit for the description
+            maxKeywords = MODx.isEmpty(MODx.config['seopro.max_keywords_description']) ? '8' : MODx.config['seopro.max_keywords_description'];
+        }
+        maxKeywords = parseInt(maxKeywords);
+
+        if (keywordCount > 0 && keywordCount < maxKeywords) {
             Ext.get('seopro-counter-keywords-' + field).removeClass('red').addClass('green');
         } else {
             Ext.get('seopro-counter-keywords-' + field).removeClass('green').addClass('red');

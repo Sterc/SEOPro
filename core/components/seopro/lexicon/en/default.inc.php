@@ -21,3 +21,9 @@ $_lang['setting_seopro.usesitename'] ='Display sitename in the Google Preview an
 $_lang['setting_seopro.usesitename_desc']= 'If this value is \'no\' the delimiter and sitename setting will be removed from the Google Preview AND SEO Pro title placeholder';
 $_lang['setting_seopro.disabledtemplates'] ='Disabled Templates';
 $_lang['setting_seopro.disabledtemplates_desc']= 'Comma separated list of disabled template IDs';
+$_lang['setting_seopro.max_keywords_title'] ='Max amount of focus keywords allowed in title.';
+$_lang['setting_seopro.max_keywords_title_desc'] ='Use this setting to control the maximum amount of focus keywords that are allowed in the title to get a thumbs-up.
+ It is advised to use no more than 4 keywords in your title.';
+$_lang['setting_seopro.max_keywords_description'] ='Max amount of focus keywords allowed in description.';
+$_lang['setting_seopro.max_keywords_description_desc'] ='Use this setting to control the maximum amount of focus keywords that are allowed in the description to get a thumbs-up.
+ It is advised to use no more than 8 keywords in your description.';
