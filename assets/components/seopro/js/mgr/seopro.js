@@ -42,7 +42,7 @@ Ext.extend(seoPro, Ext.Component, {
                 tag: 'div',
                 id: 'seopro-resource-' + field,
                 class: 'seopro-counter',
-                html: '<span class="seopro-counter-wrap seopro-counter-keywords" id="seopro-counter-keywords-' + field + '" title="' + _('seopro.keywords') + '"><strong>' + _('seopro.keywords') + '</strong></span>\
+                html: '<span class="seopro-counter-wrap seopro-counter-keywords" id="seopro-counter-keywords-' + field + '" title="' + _('seopro.keywords') + '"><strong>' + _('seopro.keywords') + ':&nbsp;&nbsp;</strong><span id="seopro-counter-keywords-' + field + '-current">0</span></span>\
                         <span class="seopro-counter-wrap seopro-counter-chars" id="seopro-counter-chars-' + field + '" title="' + _('seopro.characters.allowed') + '"><strong>' + _('seopro.characters') + ': </strong><span class="current" id="seopro-counter-chars-' + field + '-current">1</span>/<span class="allowed" id="seopro-counter-chars-' + field + '-allowed">' + seoPro.config.chars[field] + '</span></span>'
             });
             seoPro.count(field);
@@ -140,6 +140,7 @@ Ext.extend(seoPro, Ext.Component, {
             }
         });
         Ext.get('seopro-counter-chars-' + field + '-current').dom.innerHTML = charCount;
+        Ext.get('seopro-counter-keywords-' + field + '-current').dom.innerHTML = keywordCount;
 
         var maxKeywords = MODx.isEmpty(MODx.config['seopro.max_keywords_title']) ? '4' : MODx.config['seopro.max_keywords_title'];
         if (field === 'description') {
@@ -148,7 +149,7 @@ Ext.extend(seoPro, Ext.Component, {
         }
         maxKeywords = parseInt(maxKeywords);
 
-        if (keywordCount > 0 && keywordCount < maxKeywords) {
+        if (keywordCount > 0 && keywordCount <= maxKeywords) {
             Ext.get('seopro-counter-keywords-' + field).removeClass('red').addClass('green');
         } else {
             Ext.get('seopro-counter-keywords-' + field).removeClass('green').addClass('red');
