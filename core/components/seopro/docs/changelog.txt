@@ -1,4 +1,16 @@
-Changelog for seoPro.
+Changelog for SEO Pro.
+
+seoPro 1.1.0 pl
+==============
+- Removed template request parameter for OnLoadWebDocument system event
+- Fixed resource/create processor error when creating resource without $data['keywords'] set (PR#56)
+- Add build config for GPM
+- Add lexicon for branding text
+- Fix character count in pagetitle/longtitle to include site_name according to system setting 'usesitename' (#48 and #57)
+- Allow plugin to fire on new resource, when template is default_template (#58)
+- Refactor assigning and checking of template resource/request variable (#58 and #59)
+- Add system settings for max amount keywords for title/description (#51)
+- Add keyword counter to Keywords labels on title/description (#51)
 
 seoPro 1.0.4 pl
 ==============
