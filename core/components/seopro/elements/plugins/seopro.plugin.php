@@ -86,8 +86,13 @@ switch ($modx->event->name) {
         break;
 
     case 'OnDocFormSave':
-        $template = ($resource->get('template')) ? (string)$resource->get('template') : (string)$_REQUEST['template'];
-        if (in_array($template, $disabledTemplates)) {
+        $template = (string)$resource->get('template');
+        $override = false;
+        if (isset($_REQUEST['template'])) {
+            $template = (string)$_REQUEST['template'];
+            $override = true;
+        }
+        if (($override && $template === '0') || (!empty($template) && in_array($template, $disabledTemplates))) {
             break;
         }
         $seoKeywords = $modx->getObject('seoKeywords', array('resource' => $resource->get('id')));
@@ -105,10 +110,16 @@ switch ($modx->event->name) {
         break;
 
     case 'onResourceDuplicate':
-        $template = ($resource->get('template')) ? (string)$resource->get('template') : (string)$_REQUEST['template'];
-        if (in_array($template, $disabledTemplates)) {
+        $template = (string)$resource->get('template');
+        $override = false;
+        if (isset($_REQUEST['template'])) {
+            $template = (string)$_REQUEST['template'];
+            $override = true;
+        }
+        if (($override && $template === '0') || (!empty($template) && in_array($template, $disabledTemplates))) {
             break;
         }
+
         $seoKeywords = $modx->getObject('seoKeywords', array('resource' => $resource->get('id')));
         if (!$seoKeywords) {
             $seoKeywords = $modx->newObject('seoKeywords', array('resource' => $resource->get('id')));
