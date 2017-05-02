@@ -8,6 +8,7 @@ Ext.extend(seoPro, Ext.Component, {
         seoPro.config.loaded = true;
         seoPro.config.delimiter = MODx.isEmpty(MODx.config['seopro.delimiter']) ? '|' : MODx.config['seopro.delimiter'];
         seoPro.config.siteNameShow = MODx.isEmpty(MODx.config['seopro.usesitename']) ? false : true;
+        seoPro.config.searchEngine = MODx.isEmpty(MODx.config['seopro.searchengine']) ? 'google' : MODx.config['seopro.searchengine'];
         seoPro.addKeywords();
         seoPro.addPanel();
 
@@ -85,31 +86,34 @@ Ext.extend(seoPro, Ext.Component, {
             xtype: 'panel',
             anchor: '100%',
             border: false,
-            fieldLabel: _('seopro.prevbox'),
+            fieldLabel: (seoPro.config.searchEngine == 'yandex' ? _('seopro.prevbox_yandex') : _('seopro.prevbox')),
             layout: 'form',
             items: [{
                 columnWidth: .67,
                 xtype: 'panel',
                 baseCls: 'seopro-panel',
+                cls: seoPro.config.searchEngine,
                 bodyStyle: 'padding: 10px;',
                 border: false,
                 autoHeight: true,
                 items: [{
                     xtype: 'box',
                     id: 'seopro-google-title',
-                    bodyStyle: 'background-color: #fbfbfb; ',
+                    style: 'background-color: #fbfbfb; background-image: url(https://www.google.com/s2/favicons?domain='+seoPro.config.url+');',
+                    cls: seoPro.config.searchEngine,
                     html: '',
                     border: false
                 }, {
                     xtype: 'box',
                     id: 'seopro-google-url',
-                    bodyStyle: 'background-color: #fbfbfb; ',
+                    bodyStyle: 'background-color: #fbfbfb;',
+                    cls: seoPro.config.searchEngine,
                     html: seoPro.config.url,
                     border: false
                 }, {
                     xtype: 'box',
                     id: 'seopro-google-description',
-                    bodyStyle: 'background-color: #fbfbfb; ',
+                    bodyStyle: 'background-color: #fbfbfb;',
                     html: '',
                     border: false
                 }]

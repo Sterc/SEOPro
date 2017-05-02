@@ -53,6 +53,10 @@
       "value": "8",
       "area": "general"
     },{
+      "key": "searchengine",
+      "value": "google",
+      "area": "general"
+    },{
       "key": "user_name",
       "type": "textfield",
       "area": "general",

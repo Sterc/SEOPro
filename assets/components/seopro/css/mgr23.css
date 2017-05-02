@@ -53,19 +53,29 @@
 .x-form-label-top .x-form-item {
 	margin-top: 3px;
 }
-#seopro-google-title{
+#seopro-google-title {
     color: #1A0DAB;
     font-size: 18px;
     white-space: nowrap;
     width: 520px;
-    font-family: arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     text-overflow: ellipsis;
     overflow: hidden;
+    background-repeat: no-repeat;
+    background-position: 0 4px;
+    padding-left: 20px;
+}
+#seopro-google-title.yandex {
+    color: #00c;
 }
 
 #seopro-google-url{
     color: #006621;
     margin-bottom: 1px;
+    padding-left: 20px;
+}
+#seopro-google-url.yandex {
+    color: #070;
 }
 
 #seopro-google-description{
@@ -74,6 +84,7 @@
     line-height: 1.4;
     word-wrap: break-word;
     font-family: arial, sans-serif;
+    padding-left: 20px;
 }
 .seopro-counter .green{
     color: #919191 !important;
