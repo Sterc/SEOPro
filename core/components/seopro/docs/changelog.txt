@@ -11,6 +11,8 @@ seoPro 1.1.0 pl
 - Refactor assigning and checking of template resource/request variable (#58 and #59)
 - Add system settings for max amount keywords for title/description (#51)
 - Add keyword counter to Keywords labels on title/description (#51)
+- Add support for Yandex (via system settings)
+- Add tooltip to focus keywords field (#52)
 
 seoPro 1.0.4 pl
 ==============

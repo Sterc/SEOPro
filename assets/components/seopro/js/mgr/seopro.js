@@ -56,6 +56,7 @@ Ext.extend(seoPro, Ext.Component, {
             name: 'keywords',
             id: 'seopro-keywords',
             fieldLabel: _('seopro.focuskeywords'),
+            description: '[[+seoPro.keywords]]',
             value: seoPro.config.record,
             enableKeyEvents: true,
             anchor: '100%',
@@ -114,6 +115,7 @@ Ext.extend(seoPro, Ext.Component, {
                     xtype: 'box',
                     id: 'seopro-google-description',
                     bodyStyle: 'background-color: #fbfbfb;',
+                    cls: seoPro.config.searchEngine,
                     html: '',
                     border: false
                 }]

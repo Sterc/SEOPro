@@ -62,20 +62,22 @@
     text-overflow: ellipsis;
     overflow: hidden;
     background-repeat: no-repeat;
-    background-position: 0 4px;
-    padding-left: 20px;
+    background-size: 0;
 }
 #seopro-google-title.yandex {
     color: #00c;
+    padding-left: 20px;
+    background-position: 0 4px;
+    background-size: auto;
 }
 
 #seopro-google-url{
     color: #006621;
     margin-bottom: 1px;
-    padding-left: 20px;
 }
 #seopro-google-url.yandex {
     color: #070;
+    padding-left: 20px;
 }
 
 #seopro-google-description{
@@ -84,8 +86,11 @@
     line-height: 1.4;
     word-wrap: break-word;
     font-family: arial, sans-serif;
+}
+#seopro-google-description.yandex {
     padding-left: 20px;
 }
+
 .seopro-counter .green{
     color: #919191 !important;
 }
