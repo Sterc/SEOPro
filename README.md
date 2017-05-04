@@ -25,7 +25,7 @@ You can use [this gist][4] to convert a TV value to SEOPro.
 
 ## Requirements
 * [MODX version 2.5.0 or newer][5] has to be installed.
-* [PHP version 5.6][6] or newer has to be installed.
+* [PHP version 5.6 or newer][6] has to be installed.
 
 ## Future features
 * Offer SEO guidelines for the content field of a webpage.
