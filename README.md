@@ -13,7 +13,7 @@ After installing SEOPro on your website (SEOPro can be found in the package mana
 3. Now take a look at the input fields with a 'Keywords' label. Make sure you turn the grey thumbs down into green thumbs up by adding one or more keywords to these fields. Also make sure you don't exceed the given length.
 4. Save it. The webpage is now optimized for search engines and can be further improved when future features are added.
 
-*Note:* try to limit the amount of focus keywords to gain more effectivity.
+*Note:* try to limit the amount of focus keywords to gain more effectivity.  
 **Tip:** use [Google's Keyword Tool][3] to determine which keywords to focus on.
 
 ### Placeholders
