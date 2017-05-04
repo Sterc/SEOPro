@@ -31,7 +31,7 @@ You can use [this gist][4] to convert a TV value to SEOPro.
 * Offer SEO guidelines for the content field of a webpage.
 
 ## Bugs and feature requests
-We greatly value your feedback, feature requests and bug reports. Please issue them on [Github][7].
+We greatly value your feedback, feature requests and bug reports. Please issue them on [GitHub][7].
 
 [1]: https://www.sterc.nl/en/
 [2]: https://www.sterc.nl/en/modx-extras/seopro
