@@ -1,20 +1,16 @@
 --------------------
-seoPro
+SEO Pro
 --------------------
-Version: 1.0.2 PL
-Author: Wieger Sloot <wieger@sterc.nl>
-Support: Friso Speulman <friso@sterc.nl>
+Version: 1.1.0-pl
+Author: Sterc <modx@sterc.nl>
 --------------------
 
+SEO Pro is a MODX Extra developed by Sterc. This Extra offers you guidance in the process of optimising your website for search engines. It enables you to enter focus keywords per page. Based on that input, SEO Pro provides you feedback on the SEO quality of your pagetitle, longtitle, description and alias by checking if the keywords are present.
 
-MODX SEO Pro is a MODX package that helps you when performing Search Engine Optimization (SEO) in MODX. It enables you to:
-- Enter focus keywords for your page
-- Optimize your pagetitle (Title), longitle (SEO Title), description (META Description) and alias (URL) by counting if your focus keywords are used in these fields.
-- Up next: optimize your content
+Workflow:
+1. Pick a page on your MODX website which you would like to optimise for search engines and click it.
+2. Look for the field called 'Focus keywords'. Enter the keywords you would like to optimise your page for.
+3. Take a look at the input fields with a 'Keywords' label. Make sure keywords are present here and you don't exceed the given length.
+4. Save it.
 
-
-Using a TV for the keywords?
-Use this gist to convert the TV values to seoPro https://gist.github.com/frisospeulman/7751607
-
-Bugs and Features:
-https://github.com/Sterc/SEOPro
+Issues can be added on github.com/sterc/seopro
