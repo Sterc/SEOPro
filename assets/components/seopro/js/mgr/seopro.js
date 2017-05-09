@@ -100,7 +100,7 @@ Ext.extend(seoPro, Ext.Component, {
                 items: [{
                     xtype: 'box',
                     id: 'seopro-google-title',
-                    style: 'background-color: #fbfbfb; background-image: url(https://www.google.com/s2/favicons?domain='+seoPro.config.url+');',
+                    style: 'background-color: #fbfbfb; background-image: url(https://www.google.com/s2/favicons?domain='+MODx.config.site_url+');',
                     cls: seoPro.config.searchEngine,
                     html: '',
                     border: false
