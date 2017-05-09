@@ -1,6 +1,6 @@
 Changelog for SEO Pro.
 
-seoPro 1.1.0 pl
+SEO Pro 1.1.0 pl
 ==============
 - Removed template request parameter for OnLoadWebDocument system event
 - Fixed resource/create processor error when creating resource without $data['keywords'] set (PR#56)
