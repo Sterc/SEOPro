@@ -36,6 +36,9 @@
       "value": "1",
       "area": "general"
     },{
+      "key": "title_format",
+      "area": "general"
+    },{
       "key": "disabledtemplates",
       "value": "",
       "area": "general"
