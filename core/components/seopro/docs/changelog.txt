@@ -1,5 +1,9 @@
 Changelog for SEO Pro.
 
+SEO Pro 1.2.0 pl
+==============
+- Remove the SEO Pro branding HTML comment
+
 SEO Pro 1.1.0 pl
 ==============
 - Removed template request parameter for OnLoadWebDocument system event

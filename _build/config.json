@@ -3,7 +3,7 @@
   "lowCaseName": "seopro",
   "description": "MODX SEO Pro is a MODX package that helps you when performing Search Engine Optimization (SEO) in MODX.",
   "author": "Sterc",
-  "version": "1.1.0-pl",
+  "version": "1.2.0-pl",
   "package":{
     "elements": {
       "plugins": [{
@@ -32,11 +32,6 @@
       "area": "general"
     },{
       "key": "usesitename",
-      "type": "combo-boolean",
-      "value": "1",
-      "area": "general"
-    },{
-      "key": "allowbranding",
       "type": "combo-boolean",
       "value": "1",
       "area": "general"

@@ -143,7 +143,6 @@ switch ($modx->event->name) {
             $keyWords = $seoKeywords->get('keywords');
             $modx->setPlaceholder('seoPro.keywords', $keyWords);
         }
-        $siteBranding = (boolean) $modx->getOption('seopro.allowbranding', null, true);
         $siteDelimiter = $modx->getOption('seopro.delimiter', null, '/');
         $siteUseSitename = (boolean) $modx->getOption('seopro.usesitename', null, true);
         $siteID = $modx->resource->get('id');
@@ -161,9 +160,5 @@ switch ($modx->event->name) {
             }
         }
         $modx->setPlaceholder('seoPro.title', implode(" ", $seoProTitle));
-        if ($siteBranding) {
-            $modx->lexicon->load('seopro:default');
-            $modx->regClientStartupHTMLBlock('<!-- ' . $modx->lexicon('seopro.branding_text') . '-->');
-        }
         break;
 }
