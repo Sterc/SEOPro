@@ -143,22 +143,29 @@ switch ($modx->event->name) {
             $keyWords = $seoKeywords->get('keywords');
             $modx->setPlaceholder('seoPro.keywords', $keyWords);
         }
-        $siteDelimiter = $modx->getOption('seopro.delimiter', null, '/');
-        $siteUseSitename = (boolean) $modx->getOption('seopro.usesitename', null, true);
-        $siteID = $modx->resource->get('id');
-        $siteName = $modx->getOption('site_name');
-        $longtitle = $modx->resource->get('longtitle');
-        $pagetitle = $modx->resource->get('pagetitle');
-        $seoProTitle = array();
-        if ($siteID == $modx->getOption('site_start')) {
-            $seoProTitle['pagetitle'] = !empty($longtitle) ? $longtitle : $siteName;
-        } else {
-            $seoProTitle['pagetitle'] = !empty($longtitle) ? $longtitle : $pagetitle;
-            if ($siteUseSitename) {
-                $seoProTitle['delimiter'] = $siteDelimiter;
-                $seoProTitle['sitename'] = $siteName;
+        // Render the meta title, based on system settings
+        $titleFormat = $modx->getOption('seopro.title_format');
+        if (empty($titleFormat)) {
+            $siteDelimiter = $modx->getOption('seopro.delimiter', null, '/');
+            $siteUseSitename = (boolean)$modx->getOption('seopro.usesitename', null, true);
+            $siteID = $modx->resource->get('id');
+            $siteName = $modx->getOption('site_name');
+            $longtitle = $modx->resource->get('longtitle');
+            $pagetitle = $modx->resource->get('pagetitle');
+            $seoProTitle = array();
+            if ($siteID == $modx->getOption('site_start')) {
+                $seoProTitle['pagetitle'] = !empty($longtitle) ? $longtitle : $siteName;
+            } else {
+                $seoProTitle['pagetitle'] = !empty($longtitle) ? $longtitle : $pagetitle;
+                if ($siteUseSitename) {
+                    $seoProTitle['delimiter'] = $siteDelimiter;
+                    $seoProTitle['sitename'] = $siteName;
+                }
             }
+            $title = implode(' ', $seoProTitle);
+        } else {
+            $title = $modx->getOption('seopro.title_format');
         }
-        $modx->setPlaceholder('seoPro.title', implode(" ", $seoProTitle));
+        $modx->setPlaceholder('seoPro.title', $title);
         break;
 }

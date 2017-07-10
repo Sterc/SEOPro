@@ -9,6 +9,7 @@ Ext.extend(seoPro, Ext.Component, {
         seoPro.config.delimiter = MODx.isEmpty(MODx.config['seopro.delimiter']) ? '|' : MODx.config['seopro.delimiter'];
         seoPro.config.siteNameShow = MODx.isEmpty(MODx.config['seopro.usesitename']) ? false : true;
         seoPro.config.searchEngine = MODx.isEmpty(MODx.config['seopro.searchengine']) ? 'google' : MODx.config['seopro.searchengine'];
+        seoPro.config.titleFormat = MODx.isEmpty(MODx.config['seopro.title_format']) ? '' : MODx.config['seopro.title_format'];
         seoPro.addKeywords();
         seoPro.addPanel();
 
@@ -126,7 +127,6 @@ Ext.extend(seoPro, Ext.Component, {
     },
     count: function(field) {
         var Value = Ext.get('modx-resource-' + field).getValue();
-        //var maxkeywords = Ext.get('seopro-counter-keywords-' + field + '-allowed').dom.innerHTML;
         var maxchars = Ext.get('seopro-counter-chars-' + field + '-allowed').dom.innerHTML;
         var charCount = Value.length;
         if (seoPro.config.siteNameShow && (field === 'pagetitle' || field === 'longtitle')) {
@@ -168,23 +168,37 @@ Ext.extend(seoPro, Ext.Component, {
         }
     },
     changePrevBox: function(field) {
-
         switch (field) {
             case 'pagetitle':
             case 'longtitle':
-                var title,siteName;
-                if (MODx.isEmpty(seoPro.config.values['longtitle'])) {
-                    title = seoPro.config.values['pagetitle'];
-                } else {
-                    title = seoPro.config.values['longtitle'];
-                }
+                var title;
+                var resourceId = MODx.request.id;
+                if (seoPro.config.titleFormat && resourceId) {
 
-                if(seoPro.config.siteNameShow){
-                    siteName =  ' ' + seoPro.config.delimiter + ' ' + MODx.config.site_name;
+                    MODx.Ajax.request({
+                        url: seoPro.config.connectorUrl
+                        ,params: {
+                            action: 'mgr/resource/parse',
+                            id: resourceId,
+                            html: seoPro.config.titleFormat,
+                        }
+                        ,listeners: {
+                            'success':{fn:function(r) {
+                                title = r.results.output;
+                                Ext.get('seopro-google-title').dom.innerHTML = title;
+                            },scope:this}
+                        }
+                    });
                 } else {
-                    siteName = ' ';
+                    title = seoPro.config.values['pagetitle'];
+                    if (!MODx.isEmpty(seoPro.config.values['longtitle'])) {
+                        title = seoPro.config.values['longtitle'];
+                    }
+                    if (seoPro.config.siteNameShow) {
+                        title += ' ' + seoPro.config.delimiter + ' ' + MODx.config.site_name;
+                    }
+                    Ext.get('seopro-google-title').dom.innerHTML = title;
                 }
-                Ext.get('seopro-google-title').dom.innerHTML = title + siteName;
                 break;
             case 'description':
             case 'introtext':
