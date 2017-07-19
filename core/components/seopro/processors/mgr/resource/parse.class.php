@@ -14,23 +14,20 @@ class seoProParseResourceProcessor extends modProcessor
     {
         $html = $this->getProperty('html');
         $resourceId = $this->getProperty('id');
-
-        $resource = $this->modx->getObject('modResource', $resourceId);
+        $resource = $this->modx->newObject('modResource');
+        $resource->set('pagetitle', $this->getProperty('pagetitle'));
+        $resource->set('longtitle', $this->getProperty('longtitle'));
         if ($resource) {
-            $this->modx->resource = $this->modx->getObject('modResource', $resourceId);
-            $this->modx->resourceIdentifier = $resourceId;
+            $this->modx->resource = $resource;
             $maxIterations = (int)$this->modx->getOption('parser_max_iterations', null, 10);
             if (!$this->modx->parser) {
                 $this->modx->getParser();
             }
-            // Process the non-cacheable content of the Resource, but leave any unprocessed tags alone
             $this->modx->parser->processElementTags('', $html, true, false, '[[', ']]', array(), $maxIterations);
-
-            // Process the non-cacheable content of the Resource, this time removing the unprocessed tags
             $this->modx->parser->processElementTags('', $html, true, true, '[[', ']]', array(), $maxIterations);
         }
 
-        return $this->outputArray(array('id' => $resourceId,'output' => $html), 0);
+        return $this->outputArray(array('id' => $resourceId, 'output' => $html), 0);
     }
 
 }

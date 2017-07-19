@@ -34,9 +34,16 @@ Ext.extend(seoPro, Ext.Component, {
         }
         if (Field) {
             seoPro.config.values[field] = Field.getValue();
+
             Field.on('keyup', function() {
                 seoPro.config.values[field] = Field.getValue();
-                seoPro.count(field);
+                if (field != 'pagetitle' && field != 'longtitle') {
+                    seoPro.count(field);
+                }
+                seoPro.changePrevBox(field);
+            });
+            Field.on('blur', function() {
+                seoPro.config.values[field] = Field.getValue();
                 seoPro.changePrevBox(field);
             });
 
@@ -125,13 +132,19 @@ Ext.extend(seoPro, Ext.Component, {
         fp.doLayout();
 
     },
-    count: function(field) {
+    count: function(field, overrideCount) {
         var Value = Ext.get('modx-resource-' + field).getValue();
         var maxchars = Ext.get('seopro-counter-chars-' + field + '-allowed').dom.innerHTML;
-        var charCount = Value.length;
-        if (seoPro.config.siteNameShow && (field === 'pagetitle' || field === 'longtitle')) {
-            var extra = ' '+seoPro.config.delimiter+' ' + MODx.config.site_name;
-            charCount = charCount + extra.length;
+        if (overrideCount) {
+            var charCount = overrideCount;
+        } else {
+            var charCount = Value.length;
+            // console.log(Ext.get('seopro-google-title').length);
+            // console.log(Ext.get('seopro-google-title').dom.innerHTML);
+            if (seoPro.config.siteNameShow && (field === 'pagetitle' || field === 'longtitle')) {
+                var extra = ' ' + seoPro.config.delimiter + ' ' + MODx.config.site_name;
+                charCount = charCount + extra.length;
+            }
         }
         var keywordCount = 0;
         Ext.each(Ext.get('seopro-keywords').getValue().split(','), function(keyword) {
@@ -173,6 +186,8 @@ Ext.extend(seoPro, Ext.Component, {
             case 'longtitle':
                 var title;
                 var resourceId = MODx.request.id;
+                var pagetitle = Ext.get('modx-resource-pagetitle').getValue();
+                var longtitle = Ext.get('modx-resource-longtitle').getValue();
                 if (seoPro.config.titleFormat && resourceId) {
 
                     MODx.Ajax.request({
@@ -180,12 +195,16 @@ Ext.extend(seoPro, Ext.Component, {
                         ,params: {
                             action: 'mgr/resource/parse',
                             id: resourceId,
+                            pagetitle: pagetitle,
+                            longtitle: longtitle,
                             html: seoPro.config.titleFormat,
                         }
                         ,listeners: {
                             'success':{fn:function(r) {
                                 title = r.results.output;
                                 Ext.get('seopro-google-title').dom.innerHTML = title;
+                                var count = title.length;
+                                seoPro.count(field, count);
                             },scope:this}
                         }
                     });

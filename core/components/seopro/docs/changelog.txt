@@ -3,6 +3,8 @@ Changelog for SEO Pro.
 SEO Pro 1.2.0 pl
 ==============
 - Remove the SEO Pro branding HTML comment
+- Add system setting for specifying the title format
+- Update counters to set correct value based on title format setting
 
 SEO Pro 1.1.0 pl
 ==============
