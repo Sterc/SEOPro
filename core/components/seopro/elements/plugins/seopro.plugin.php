@@ -39,7 +39,15 @@ switch ($modx->event->name) {
         $keywords = '';
         $modx->controller->addLexiconTopic('seopro:default');
         if ($mode == 'upd') {
-            $url = $modx->makeUrl($resource->get('id'), '', '', 'full');
+            $ctx = $modx->getContext($resource->get('context_key'));
+            if ($ctx) {
+                $url = $ctx->getOption('site_url', '', $modx->getOption('site_url'));
+                if ($resource->get('id') != $ctx->getOption('site_start', '', $modx->getOption('site_start'))) {
+                    $url .= $resource->get('uri');
+                }
+            } else {
+                $url = $modx->makeUrl($resource->get('id'), '', '', 'full');
+            }
             $url = str_replace($resource->get('alias'), '<span id=\"seopro-replace-alias\">' . $resource->get('alias') . '</span>', $url);
             $seoKeywords = $modx->getObject('seoKeywords', array('resource' => $resource->get('id')));
             if ($seoKeywords) {

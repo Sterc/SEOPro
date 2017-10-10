@@ -1,5 +1,9 @@
 Changelog for SEO Pro.
 
+SEO Pro 1.2.1 pl
+==============
+- Set correct preview url for multi-context environments
+
 SEO Pro 1.2.0 pl
 ==============
 - Remove the SEO Pro branding HTML comment
