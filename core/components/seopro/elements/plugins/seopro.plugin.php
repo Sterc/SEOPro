@@ -38,27 +38,29 @@ switch ($modx->event->name) {
 
         $keywords = '';
         $modx->controller->addLexiconTopic('seopro:default');
+        $ctxKey = !empty($resource) ? $resource->get('context_key') : $modx->getOption('default_context');
+        $ctx = $modx->getContext($ctxKey);
+        if ($ctx) {
+            $url = $ctx->getOption('site_url', '', $modx->getOption('site_url'));
+        } else {
+            $url = $modx->getOption('site_url');
+        }
         if ($mode == 'upd') {
-            $ctx = $modx->getContext($resource->get('context_key'));
             if ($ctx) {
-                $url = $ctx->getOption('site_url', '', $modx->getOption('site_url'));
                 if ($resource->get('id') != $ctx->getOption('site_start', '', $modx->getOption('site_start'))) {
                     $url .= $resource->get('uri');
                 }
             } else {
                 $url = $modx->makeUrl($resource->get('id'), '', '', 'full');
             }
-            $url = str_replace($resource->get('alias'), '<span id=\"seopro-replace-alias\">' . $resource->get('alias') . '</span>', $url);
+            $url = str_replace(
+                $resource->get('alias'),
+                '<span id=\"seopro-replace-alias\">' . $resource->get('alias') . '</span>',
+                $url
+            );
             $seoKeywords = $modx->getObject('seoKeywords', array('resource' => $resource->get('id')));
             if ($seoKeywords) {
                 $keywords = $seoKeywords->get('keywords');
-            }
-        } else {
-            if ($_REQUEST['id']) {
-                $url = $modx->makeUrl($_REQUEST['id'], '', '', 'full');
-                $url .= '/<span id=\"seopro-replace-alias\"></span>';
-            } else {
-                $url = $modx->getOption('site_url') . '<span id=\"seopro-replace-alias\"></span>';
             }
         }
 
