@@ -37,9 +37,7 @@ Ext.extend(seoPro, Ext.Component, {
 
             Field.on('keyup', function() {
                 seoPro.config.values[field] = Field.getValue();
-                if (field != 'pagetitle' && field != 'longtitle') {
-                    seoPro.count(field);
-                }
+                seoPro.count(field);
                 seoPro.changePrevBox(field);
             });
             Field.on('blur', function() {
