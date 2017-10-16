@@ -1,7 +1,7 @@
 --------------------
 SEO Pro
 --------------------
-Version: 1.1.0-pl
+Version: 1.2.2-pl
 Author: Sterc <modx@sterc.nl>
 --------------------
 
@@ -10,7 +10,7 @@ SEO Pro is a MODX Extra developed by Sterc. This Extra offers you guidance in th
 Workflow:
 1. Pick a page on your MODX website which you would like to optimise for search engines and click it.
 2. Look for the field called 'Focus keywords'. Enter the keywords you would like to optimise your page for.
-3. Take a look at the input fields with a 'Keywords' label. Make sure keywords are present here and you don't exceed the given length.
+3. Take a look at the input fields with a 'Keywords' label. Make s  ure keywords are present here and you don't exceed the given length.
 4. Save it.
 
 Issues can be added on github.com/sterc/seopro

@@ -38,19 +38,29 @@ switch ($modx->event->name) {
 
         $keywords = '';
         $modx->controller->addLexiconTopic('seopro:default');
+        $ctxKey = !empty($resource) ? $resource->get('context_key') : $modx->getOption('default_context');
+        $ctx = $modx->getContext($ctxKey);
+        if ($ctx) {
+            $url = $ctx->getOption('site_url', '', $modx->getOption('site_url'));
+        } else {
+            $url = $modx->getOption('site_url');
+        }
         if ($mode == 'upd') {
-            $url = $modx->makeUrl($resource->get('id'), '', '', 'full');
-            $url = str_replace($resource->get('alias'), '<span id=\"seopro-replace-alias\">' . $resource->get('alias') . '</span>', $url);
+            if ($ctx) {
+                if ($resource->get('id') != $ctx->getOption('site_start', '', $modx->getOption('site_start'))) {
+                    $url .= $resource->get('uri');
+                }
+            } else {
+                $url = $modx->makeUrl($resource->get('id'), '', '', 'full');
+            }
+            $url = str_replace(
+                $resource->get('alias'),
+                '<span id=\"seopro-replace-alias\">' . $resource->get('alias') . '</span>',
+                $url
+            );
             $seoKeywords = $modx->getObject('seoKeywords', array('resource' => $resource->get('id')));
             if ($seoKeywords) {
                 $keywords = $seoKeywords->get('keywords');
-            }
-        } else {
-            if ($_REQUEST['id']) {
-                $url = $modx->makeUrl($_REQUEST['id'], '', '', 'full');
-                $url .= '/<span id=\"seopro-replace-alias\"></span>';
-            } else {
-                $url = $modx->getOption('site_url') . '<span id=\"seopro-replace-alias\"></span>';
             }
         }
 
@@ -143,27 +153,29 @@ switch ($modx->event->name) {
             $keyWords = $seoKeywords->get('keywords');
             $modx->setPlaceholder('seoPro.keywords', $keyWords);
         }
-        $siteBranding = (boolean) $modx->getOption('seopro.allowbranding', null, true);
-        $siteDelimiter = $modx->getOption('seopro.delimiter', null, '/');
-        $siteUseSitename = (boolean) $modx->getOption('seopro.usesitename', null, true);
-        $siteID = $modx->resource->get('id');
-        $siteName = $modx->getOption('site_name');
-        $longtitle = $modx->resource->get('longtitle');
-        $pagetitle = $modx->resource->get('pagetitle');
-        $seoProTitle = array();
-        if ($siteID == $modx->getOption('site_start')) {
-            $seoProTitle['pagetitle'] = !empty($longtitle) ? $longtitle : $siteName;
-        } else {
-            $seoProTitle['pagetitle'] = !empty($longtitle) ? $longtitle : $pagetitle;
-            if ($siteUseSitename) {
-                $seoProTitle['delimiter'] = $siteDelimiter;
-                $seoProTitle['sitename'] = $siteName;
+        // Render the meta title, based on system settings
+        $titleFormat = $modx->getOption('seopro.title_format');
+        if (empty($titleFormat)) {
+            $siteDelimiter = $modx->getOption('seopro.delimiter', null, '/');
+            $siteUseSitename = (boolean)$modx->getOption('seopro.usesitename', null, true);
+            $siteID = $modx->resource->get('id');
+            $siteName = $modx->getOption('site_name');
+            $longtitle = $modx->resource->get('longtitle');
+            $pagetitle = $modx->resource->get('pagetitle');
+            $seoProTitle = array();
+            if ($siteID == $modx->getOption('site_start')) {
+                $seoProTitle['pagetitle'] = !empty($longtitle) ? $longtitle : $siteName;
+            } else {
+                $seoProTitle['pagetitle'] = !empty($longtitle) ? $longtitle : $pagetitle;
+                if ($siteUseSitename) {
+                    $seoProTitle['delimiter'] = $siteDelimiter;
+                    $seoProTitle['sitename'] = $siteName;
+                }
             }
+            $title = implode(' ', $seoProTitle);
+        } else {
+            $title = $modx->getOption('seopro.title_format');
         }
-        $modx->setPlaceholder('seoPro.title', implode(" ", $seoProTitle));
-        if ($siteBranding) {
-            $modx->lexicon->load('seopro:default');
-            $modx->regClientStartupHTMLBlock('<!-- ' . $modx->lexicon('seopro.branding_text') . '-->');
-        }
+        $modx->setPlaceholder('seoPro.title', $title);
         break;
 }

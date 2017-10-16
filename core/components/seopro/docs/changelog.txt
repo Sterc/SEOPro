@@ -1,5 +1,19 @@
 Changelog for SEO Pro.
 
+SEO Pro 1.2.2 pl
+==============
+- Add count back to pagetitle & longtitle
+
+SEO Pro 1.2.1 pl
+==============
+- Set correct preview url for multi-context environments
+
+SEO Pro 1.2.0 pl
+==============
+- Remove the SEO Pro branding HTML comment
+- Add system setting for specifying the title format
+- Update counters to set correct value based on title format setting
+
 SEO Pro 1.1.0 pl
 ==============
 - Removed template request parameter for OnLoadWebDocument system event

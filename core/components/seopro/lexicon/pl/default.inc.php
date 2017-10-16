@@ -20,3 +20,6 @@ $_lang['setting_seopro.allowbranding'] ='Pozwól na branding Sterc w kodzie stro
 $_lang['setting_seopro.allowbranding_desc']= 'Zezwól na link do naszej strony ukryty w komentarzu HTML';
 $_lang['setting_seopro.usesitename'] ='Pokaż sitename w [[+seoPro.title]] oraz w podglądzie Google?';
 $_lang['setting_seopro.usesitename_desc']= 'Wartość NO oznacza usunięcie sitename z [[+seoPro.title]] i podglądu Google';
+$_lang['setting_seopro.title_format'] ='Format used for the meta title.';
+$_lang['setting_seopro.title_format_desc'] ='Here you can specify the format used for the meta title used
+ in Google/Yandex preview. The rendered output is also available on frontend with [[+seoPro.title]].';

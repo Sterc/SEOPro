@@ -30,3 +30,6 @@ $_lang['setting_seopro.max_keywords_description_desc'] ='Vul hier het maximaal a
  We adviseren om niet meer dan 8 keywords in de omschrijving te gebruiken.';
 $_lang['setting_seopro.searchengine'] ='Welke zoekmachine gebruiken in de preview';
 $_lang['setting_seopro.searchengine_desc'] ='Mogelijke waarden: google, yandex.';
+$_lang['setting_seopro.title_format'] ='Format used for the meta title.';
+$_lang['setting_seopro.title_format_desc'] ='Here you can specify the format used for the meta title used
+ in Google/Yandex preview. The rendered output is also available on frontend with [[+seoPro.title]].';
