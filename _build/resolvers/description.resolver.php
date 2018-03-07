@@ -33,7 +33,23 @@ if ($transport->xpdo) {
                 $c = $modx->prepare("SHOW COLUMNS IN {$table} WHERE Field = 'description';");
                 if ($c->execute() && $data = $c->fetch(PDO::FETCH_ASSOC)) {
                     if ($data['Type'] == 'text') {
-                        $modx->prepare("ALTER TABLE {$table} CHANGE `description` `description` VARCHAR(191);")
+                        $length = 255;
+                        $schema = MODX_CORE_PATH . 'model/schema/modx.mysql.schema.xml';
+                        if (is_file($schema)) {
+                            if ($schema = new SimpleXMLElement($schema, 0, true)) {
+                                foreach ($schema->object as $obj) {
+                                    if ((string)$obj['class'] == 'modResource') {
+                                        foreach ($obj->field as $field) {
+                                            if ((string)$field['key'] == 'description') {
+                                                $length = (string)$field['precision'];
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            unset($schema);
+                        }
+                        $modx->prepare("ALTER TABLE {$table} CHANGE `description` `description` VARCHAR({$length});")
                             ->execute();
                     }
                 }
