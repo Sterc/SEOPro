@@ -12,6 +12,20 @@ if (!($seoPro instanceof seoPro)) {
 $disabledTemplates = explode(',', $modx->getOption('seopro.disabledtemplates', null, '0'));
 
 switch ($modx->event->name) {
+    case 'OnMODXInit':
+        $version = $modx->getVersionData();
+        $version = (int)($version['version'] . $version['major_version']);
+        if ($version < 27) {
+            $modx->loadClass('modResource');
+            $modx->map['modResource']['fieldMeta']['description'] = array(
+                'dbtype' => 'text',
+                'phptype' => 'string',
+                'index' => 'fulltext',
+                'indexgrp' => 'content_ft_idx',
+            );
+        }
+        break;
+
     case 'OnDocFormRender':
         $template = (string)$resource->get('template');
         $override = false;
@@ -23,9 +37,8 @@ switch ($modx->event->name) {
             break;
         }
         
-        
         $currClassKey = $resource->get('class_key');
-        $strFields = $modx->getOption('seopro.fields', null, 'pagetitle:70,longtitle:70,description:155,alias:2023,menutitle:2023');
+        $strFields = $modx->getOption('seopro.fields', null, 'pagetitle:70,longtitle:70,description:320,alias:2023,menutitle:2023');
         $arrFields = array();
         if (is_array(explode(',', $strFields))) {
             foreach (explode(',', $strFields) as $field) {
@@ -80,8 +93,7 @@ switch ($modx->event->name) {
             seoPro.config.fields = "' . implode(",", array_keys($arrFields)) . '";
             seoPro.config.chars = ' . $modx->toJSON($arrFields) . '
             seoPro.config.url = "' . $url . '";
-        });
-    </script>');
+        });</script>');
 
         /* include CSS and JS*/
         $version = $modx->getVersionData();
