@@ -7,6 +7,10 @@ $xpdo_meta_map['seoKeywords']= array (
   'version' => NULL,
   'table' => 'seopro_keywords',
   'extends' => 'xPDOSimpleObject',
+  'tableMeta' => 
+  array (
+    'engine' => 'InnoDB',
+  ),
   'fields' => 
   array (
     'resource' => 0,
@@ -25,7 +29,7 @@ $xpdo_meta_map['seoKeywords']= array (
     'keywords' => 
     array (
       'dbtype' => 'text',
-      'phptype' => 'text',
+      'phptype' => 'string',
       'null' => true,
       'default' => '',
     ),

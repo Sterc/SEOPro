@@ -3,7 +3,7 @@
   "lowCaseName": "seopro",
   "description": "MODX SEO Pro is a MODX package that helps you when performing Search Engine Optimization (SEO) in MODX.",
   "author": "Sterc",
-  "version": "1.2.2-pl",
+  "version": "1.3.0-pl",
   "package":{
     "elements": {
       "plugins": [{
@@ -11,6 +11,7 @@
         "description": "SEO optimizing plugin for MODx Revolution.",
         "file": "seopro.plugin.php",
         "events": [
+          "OnMODXInit",
           "OnDocFormRender",
           "OnDocFormSave",
           "OnResourceDuplicate",
@@ -28,7 +29,7 @@
       "area": "general"
     },{
       "key": "fields",
-      "value": "pagetitle:70,longtitle:70,description:155,alias:2023,menutitle:2023",
+      "value": "pagetitle:70,longtitle:70,description:320,alias:2023,menutitle:2023",
       "area": "general"
     },{
       "key": "usesitename",
@@ -73,6 +74,7 @@
     "resolver": {
       "after": [
         "setupoptions.resolver.php",
+        "description.resolver.php",
         "stercextra.resolver.php"
       ]
     },

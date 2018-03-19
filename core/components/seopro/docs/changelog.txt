@@ -1,5 +1,10 @@
 Changelog for SEO Pro.
 
+SEO Pro 1.3.0 pl
+==============
+- Change type of modResource.description to be "text" instead of "varchar".
+- Small code improvements.
+
 SEO Pro 1.2.2 pl
 ==============
 - Add count back to pagetitle & longtitle

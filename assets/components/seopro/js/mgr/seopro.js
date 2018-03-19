@@ -7,7 +7,7 @@ Ext.extend(seoPro, Ext.Component, {
     initialize: function() {
         seoPro.config.loaded = true;
         seoPro.config.delimiter = MODx.isEmpty(MODx.config['seopro.delimiter']) ? '|' : MODx.config['seopro.delimiter'];
-        seoPro.config.siteNameShow = MODx.isEmpty(MODx.config['seopro.usesitename']) ? false : true;
+        seoPro.config.siteNameShow = !MODx.isEmpty(MODx.config['seopro.usesitename']);
         seoPro.config.searchEngine = MODx.isEmpty(MODx.config['seopro.searchengine']) ? 'google' : MODx.config['seopro.searchengine'];
         seoPro.config.titleFormat = MODx.isEmpty(MODx.config['seopro.title_format']) ? '' : MODx.config['seopro.title_format'];
         seoPro.addKeywords();
@@ -25,16 +25,18 @@ Ext.extend(seoPro, Ext.Component, {
             }
         });
     },
-    addCounter: function(field, chars) {
+    addCounter: function(field) {
         var Field = Ext.getCmp('modx-resource-' + field);
+        /*
         if (!Field && field === 'description') {
             field = 'introtext';
-            var Field = Ext.getCmp('modx-resource-' + field);
+            Field = Ext.getCmp('modx-resource-' + field);
             seoPro.config.chars[field] = "155";
-        }
+        }*/
         if (Field) {
             seoPro.config.values[field] = Field.getValue();
-
+            Field.maxLength = Number(seoPro.config.chars[field]);
+            Field.reset();
             Field.on('keyup', function() {
                 seoPro.config.values[field] = Field.getValue();
                 seoPro.count(field);
@@ -133,10 +135,11 @@ Ext.extend(seoPro, Ext.Component, {
     count: function(field, overrideCount) {
         var Value = Ext.get('modx-resource-' + field).getValue();
         var maxchars = Ext.get('seopro-counter-chars-' + field + '-allowed').dom.innerHTML;
+        var charCount;
         if (overrideCount) {
-            var charCount = overrideCount;
+            charCount = overrideCount;
         } else {
-            var charCount = Value.length;
+            charCount = Value.length;
             // console.log(Ext.get('seopro-google-title').length);
             // console.log(Ext.get('seopro-google-title').dom.innerHTML);
             if (seoPro.config.siteNameShow && (field === 'pagetitle' || field === 'longtitle')) {
@@ -187,7 +190,6 @@ Ext.extend(seoPro, Ext.Component, {
                 var pagetitle = Ext.get('modx-resource-pagetitle').getValue();
                 var longtitle = Ext.get('modx-resource-longtitle').getValue();
                 if (seoPro.config.titleFormat && resourceId) {
-
                     MODx.Ajax.request({
                         url: seoPro.config.connectorUrl
                         ,params: {
