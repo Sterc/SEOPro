@@ -10,7 +10,11 @@ Ext.extend(seoPro, Ext.Component, {
         seoPro.config.siteNameShow = !MODx.isEmpty(MODx.config['seopro.usesitename']);
         seoPro.config.searchEngine = MODx.isEmpty(MODx.config['seopro.searchengine']) ? 'google' : MODx.config['seopro.searchengine'];
         seoPro.config.titleFormat = MODx.isEmpty(MODx.config['seopro.title_format']) ? '' : MODx.config['seopro.title_format'];
-        seoPro.addKeywords();
+
+        if (parseInt(MODx.config['seopro.use_keywords']) === 1) {
+            seoPro.addKeywords();
+        }
+
         seoPro.addPanel();
 
         Ext.each(seoPro.config.fields.split(','), function(field) {
@@ -47,12 +51,17 @@ Ext.extend(seoPro, Ext.Component, {
                 seoPro.changePrevBox(field);
             });
 
+            var counterHtml = '';
+            if (parseInt(MODx.config['seopro.use_keywords']) === 1) {
+                counterHtml += '<span class="seopro-counter-wrap seopro-counter-keywords" id="seopro-counter-keywords-' + field + '" title="' + _('seopro.keywords') + '"><strong>' + _('seopro.keywords') + ':&nbsp;&nbsp;</strong><span id="seopro-counter-keywords-' + field + '-current">0</span></span>';
+            }
+            counterHtml += '<span class="seopro-counter-wrap seopro-counter-chars" id="seopro-counter-chars-' + field + '" title="' + _('seopro.characters.allowed') + '"><strong>' + _('seopro.characters') + ': </strong><span class="current" id="seopro-counter-chars-' + field + '-current">1</span>/<span class="allowed" id="seopro-counter-chars-' + field + '-allowed">' + seoPro.config.chars[field] + '</span></span>';
+
             Ext.get('x-form-el-modx-resource-' + field).createChild({
                 tag: 'div',
                 id: 'seopro-resource-' + field,
                 class: 'seopro-counter',
-                html: '<span class="seopro-counter-wrap seopro-counter-keywords" id="seopro-counter-keywords-' + field + '" title="' + _('seopro.keywords') + '"><strong>' + _('seopro.keywords') + ':&nbsp;&nbsp;</strong><span id="seopro-counter-keywords-' + field + '-current">0</span></span>\
-                        <span class="seopro-counter-wrap seopro-counter-chars" id="seopro-counter-chars-' + field + '" title="' + _('seopro.characters.allowed') + '"><strong>' + _('seopro.characters') + ': </strong><span class="current" id="seopro-counter-chars-' + field + '-current">1</span>/<span class="allowed" id="seopro-counter-chars-' + field + '-allowed">' + seoPro.config.chars[field] + '</span></span>'
+                html: counterHtml
             });
             seoPro.count(field);
         }
@@ -147,33 +156,37 @@ Ext.extend(seoPro, Ext.Component, {
                 charCount = charCount + extra.length;
             }
         }
-        var keywordCount = 0;
-        Ext.each(Ext.get('seopro-keywords').getValue().split(','), function(keyword) {
-            keyword = keyword.replace(/^\s+/, '').toLowerCase();
 
-            if (keyword) {
-                var counter = Value.toLowerCase().match(new RegExp("(^|[ \s\n\r\t\.,'\(\"\+;!?:\-])" + keyword + "($|[ \s\n\r\t.,'\)\"\+!?:;\-])", 'gim'));
-                // var counter = Value.toLowerCase().match(new RegExp('\\b' + keyword + '\\b', 'g'));
-                if (counter) {
-                    keywordCount = keywordCount + counter.length;
+        if (parseInt(MODx.config['seopro.use_keywords']) === 1) {
+            var keywordCount = 0;
+            Ext.each(Ext.get('seopro-keywords').getValue().split(','), function (keyword) {
+                keyword = keyword.replace(/^\s+/, '').toLowerCase();
+
+                if (keyword) {
+                    var counter = Value.toLowerCase().match(new RegExp("(^|[ \s\n\r\t\.,'\(\"\+;!?:\-])" + keyword + "($|[ \s\n\r\t.,'\)\"\+!?:;\-])", 'gim'));
+                    // var counter = Value.toLowerCase().match(new RegExp('\\b' + keyword + '\\b', 'g'));
+                    if (counter) {
+                        keywordCount = keywordCount + counter.length;
+                    }
                 }
+            });
+
+            Ext.get('seopro-counter-keywords-' + field + '-current').dom.innerHTML = keywordCount;
+
+            var maxKeywords = MODx.isEmpty(MODx.config['seopro.max_keywords_title']) ? '4' : MODx.config['seopro.max_keywords_title'];
+            if (field === 'description') {
+                // use different limit for the description
+                maxKeywords = MODx.isEmpty(MODx.config['seopro.max_keywords_description']) ? '8' : MODx.config['seopro.max_keywords_description'];
             }
-        });
+            maxKeywords = parseInt(maxKeywords);
+
+            if (keywordCount > 0 && keywordCount <= maxKeywords) {
+                Ext.get('seopro-counter-keywords-' + field).removeClass('red').addClass('green');
+            } else {
+                Ext.get('seopro-counter-keywords-' + field).removeClass('green').addClass('red');
+            }
+        }
         Ext.get('seopro-counter-chars-' + field + '-current').dom.innerHTML = charCount;
-        Ext.get('seopro-counter-keywords-' + field + '-current').dom.innerHTML = keywordCount;
-
-        var maxKeywords = MODx.isEmpty(MODx.config['seopro.max_keywords_title']) ? '4' : MODx.config['seopro.max_keywords_title'];
-        if (field === 'description') {
-            // use different limit for the description
-            maxKeywords = MODx.isEmpty(MODx.config['seopro.max_keywords_description']) ? '8' : MODx.config['seopro.max_keywords_description'];
-        }
-        maxKeywords = parseInt(maxKeywords);
-
-        if (keywordCount > 0 && keywordCount <= maxKeywords) {
-            Ext.get('seopro-counter-keywords-' + field).removeClass('red').addClass('green');
-        } else {
-            Ext.get('seopro-counter-keywords-' + field).removeClass('green').addClass('red');
-        }
 
         if (charCount > maxchars || charCount === 0) {
             Ext.get('seopro-counter-chars-' + field).removeClass('green').addClass('red');

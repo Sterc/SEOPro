@@ -56,6 +56,11 @@
       "value": "google",
       "area": "general"
     },{
+      "key": "use_keywords",
+      "type": "combo-boolean",
+      "value": "1",
+      "area": "general"
+    }, {
       "key": "user_name",
       "type": "textfield",
       "area": "general",

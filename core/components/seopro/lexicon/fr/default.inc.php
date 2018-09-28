@@ -12,3 +12,5 @@ $_lang['seopro.branding_text']='This site is optimized with the Sterc seoPro plu
 
 $_lang['setting_seopro.delimiter'] = 'Séparateur dans Google/Yandex preview.';
 $_lang['setting_seopro.delimiter_desc'] = 'Séparateur de titre et de nom de site';
+$_lang['setting_seopro.use_keywords'] ='Use keywords';
+$_lang['setting_seopro.use_keywords_desc'] ='Enable/disable the keywords field and keywords counters.';

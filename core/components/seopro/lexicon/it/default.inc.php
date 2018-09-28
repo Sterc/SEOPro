@@ -10,3 +10,5 @@ $_lang['seopro.prevbox'] = 'Come verrà visualizzato in Google?';
 $_lang['seopro.prevbox_yandex'] = 'Come verrà visualizzato in Yandex?';
 $_lang['seopro.emptymetadescription']='<i>Please enter a description</i>';
 $_lang['seopro.branding_text']='This site is optimized with the Sterc seoPro plugin - https://github.com/Sterc/SEOPro.';
+$_lang['setting_seopro.use_keywords'] ='Use keywords';
+$_lang['setting_seopro.use_keywords_desc'] ='Enable/disable the keywords field and keywords counters.';

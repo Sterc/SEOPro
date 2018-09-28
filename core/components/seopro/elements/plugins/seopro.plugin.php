@@ -160,11 +160,16 @@ switch ($modx->event->name) {
         if (in_array($template, $disabledTemplates)) {
             break;
         }
-        $seoKeywords = $modx->getObject('seoKeywords', array('resource' => $modx->resource->get('id')));
-        if ($seoKeywords) {
-            $keyWords = $seoKeywords->get('keywords');
-            $modx->setPlaceholder('seoPro.keywords', $keyWords);
+
+        $useKeywords = (bool) $modx->getOption('seopro.use_keywords', null, true);
+        if ($useKeywords) {
+            $seoKeywords = $modx->getObject('seoKeywords', array('resource' => $modx->resource->get('id')));
+            if ($seoKeywords) {
+                $keyWords = $seoKeywords->get('keywords');
+                $modx->setPlaceholder('seoPro.keywords', $keyWords);
+            }
         }
+
         // Render the meta title, based on system settings
         $titleFormat = $modx->getOption('seopro.title_format');
         if (empty($titleFormat)) {
