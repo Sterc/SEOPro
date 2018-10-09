@@ -127,14 +127,14 @@
     color: #D80000 !important;
 }
 
-.current {
+.seopro-counter .current {
     text-align: right;
     margin-right: 1px;
     display: inline-block;
     width: 21px;
 }
 
-.allowed {
+.seopro-counter .allowed {
     width: 21px;
     display: inline-block;
     text-align: left;
