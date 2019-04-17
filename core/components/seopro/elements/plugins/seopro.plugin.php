@@ -153,7 +153,7 @@ switch ($modx->event->name) {
         break;
 
     case 'OnLoadWebDocument':
-        if ($modx->context->get('key') == "mgr") {
+        if ($modx->context->get('key') == "mgr" || !is_object($modx->resource)) {
             break;
         }
         $template = ($modx->resource->get('template')) ? (string)$modx->resource->get('template') : '';
