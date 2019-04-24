@@ -85,13 +85,13 @@ Ext.extend(seoPro, Ext.Component, {
             text: _('seopro.focuskeywords_desc'),
             cls: 'desc-under'
         });
-        fp.add(field);
-        fp.add(fieldDesc);
+        fp.insert(3, field);
+        fp.insert(4, fieldDesc);
         fp.doLayout();
     },
     addPanel: function() {
         var fp = Ext.getCmp('modx-resource-main-left');
-        fp.add({
+        fp.insert(5, {
             xtype: 'panel',
             anchor: '100%',
             border: false,
