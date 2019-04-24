@@ -170,15 +170,15 @@ Ext.extend(seoPro, Ext.Component, {
         maxKeywords = parseInt(maxKeywords);
 
         if (keywordCount > 0 && keywordCount <= maxKeywords) {
-            Ext.get('seopro-counter-keywords-' + field).removeClass('red').addClass('green');
+            Ext.get('seopro-counter-keywords-' + field).removeClass('red');
         } else {
-            Ext.get('seopro-counter-keywords-' + field).removeClass('green').addClass('red');
+            Ext.get('seopro-counter-keywords-' + field).addClass('red');
         }
 
         if (charCount > maxchars || charCount === 0) {
-            Ext.get('seopro-counter-chars-' + field).removeClass('green').addClass('red');
+            Ext.get('seopro-counter-chars-' + field).addClass('red');
         } else {
-            Ext.get('seopro-counter-chars-' + field).removeClass('red').addClass('green');
+            Ext.get('seopro-counter-chars-' + field).removeClass('red');
         }
     },
     changePrevBox: function(field) {

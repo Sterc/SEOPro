@@ -15,16 +15,8 @@
     display: block;
 }
 .seopro-counter-wrap{
-	background: #FBFBFB;
-	border: 1px #e4e4e4 solid;
-	border-bottom: none;
-	text-align: center;
-	border-radius: 8px 8px 0 0;
-	padding: 4px 11px 0 14px;
-	line-height: 18px;
-	float: left;
-	margin-left: 5px;
-    display: block;
+    float: left;
+    margin-left: 5px;
 }
 
 #modx-resource-pagetitle, #modx-resource-longtitle, #modx-resource-description, #modx-resource-alias, #modx-resource-menutitle {
@@ -94,15 +86,7 @@
 .seopro-counter .green{
     color: #919191 !important;
 }
-.seopro-counter .red{
-    color: #707070 !important;
-}
-.seopro-counter-keywords.green{
-	background: url(../img/thumb-up.png) no-repeat 10px 3px #FBFBFB;
-}
-.seopro-counter-keywords.red{
-	background: url(../img/thumb-down.png) no-repeat 10px 4px #FBFBFB;
-}
+
 #seopro-resource-alias .seopro-counter-chars, #seopro-resource-menutitle .seopro-counter-chars{
 	display: none;
 }
