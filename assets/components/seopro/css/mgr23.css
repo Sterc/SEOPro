@@ -87,7 +87,22 @@
     color: #919191 !important;
 }
 
-#seopro-resource-alias .seopro-counter-chars, #seopro-resource-menutitle .seopro-counter-chars{
+.seopro-counter-chars {
+    position: absolute;
+    top: 29px;
+    float: none;
+    width: 50px;
+    right: 10px;
+}
+
+#modx-resource-pagetitle,
+#modx-resource-longtitle,
+#modx-resource-description {
+    padding-right: 60px;
+}
+
+#seopro-resource-alias .seopro-counter-chars,
+#seopro-resource-menutitle .seopro-counter-chars{
 	display: none;
 }
 .seopro-counter-keywords{
@@ -119,7 +134,6 @@
 }
 
 .seopro-counter .allowed {
-    width: 21px;
     display: inline-block;
     text-align: left;
 }

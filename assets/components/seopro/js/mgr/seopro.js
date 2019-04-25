@@ -52,7 +52,7 @@ Ext.extend(seoPro, Ext.Component, {
                 id: 'seopro-resource-' + field,
                 class: 'seopro-counter',
                 html: '<span class="seopro-counter-wrap seopro-counter-keywords" id="seopro-counter-keywords-' + field + '" title="' + _('seopro.keywords') + '"><strong>' + _('seopro.keywords') + ':&nbsp;&nbsp;</strong><span id="seopro-counter-keywords-' + field + '-current">0</span></span>\
-                        <span class="seopro-counter-wrap seopro-counter-chars" id="seopro-counter-chars-' + field + '" title="' + _('seopro.characters.allowed') + '"><strong>' + _('seopro.characters') + ': </strong><span class="current" id="seopro-counter-chars-' + field + '-current">1</span>/<span class="allowed" id="seopro-counter-chars-' + field + '-allowed">' + seoPro.config.chars[field] + '</span></span>'
+                        <span class="seopro-counter-wrap seopro-counter-chars" id="seopro-counter-chars-' + field + '" title="' + _('seopro.characters.allowed') + '"><span class="current" id="seopro-counter-chars-' + field + '-current">1</span>/<span class="allowed" id="seopro-counter-chars-' + field + '-allowed">' + seoPro.config.chars[field] + '</span></span>'
             });
             seoPro.count(field);
         }
