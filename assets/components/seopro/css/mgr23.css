@@ -23,12 +23,6 @@
     border-top-right-radius: 0;
 }
 
-.x-form-focus + .seopro-counter .seopro-counter-wrap{
-    background-color: #FBFBFB;
-    border-color: #2d86b7;
-    border-bottom-color: #FBFBFB;
-}
-
 .x-form-invalid + .seopro-counter .seopro-counter-wrap{
     border-color: #be0000 !important;
 }
