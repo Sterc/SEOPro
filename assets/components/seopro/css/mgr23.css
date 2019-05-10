@@ -15,12 +15,26 @@
     display: block;
 }
 .seopro-counter-wrap{
-    float: left;
-    margin-left: 5px;
+	background: #FBFBFB;
+	border: 1px #e4e4e4 solid;
+	border-bottom: none;
+	text-align: center;
+	border-radius: 8px 8px 0 0;
+	padding: 4px 11px 0 14px;
+	line-height: 18px;
+	float: left;
+	margin-left: 5px;
+    display: block;
 }
 
 #modx-resource-pagetitle, #modx-resource-longtitle, #modx-resource-description, #modx-resource-alias, #modx-resource-menutitle {
     border-top-right-radius: 0;
+}
+
+.x-form-focus + .seopro-counter .seopro-counter-wrap{
+    background-color: #FBFBFB;
+    border-color: #2d86b7;
+    border-bottom-color: #FBFBFB;
 }
 
 .x-form-invalid + .seopro-counter .seopro-counter-wrap{
@@ -80,23 +94,16 @@
 .seopro-counter .green{
     color: #919191 !important;
 }
-
-.seopro-counter-chars {
-    position: absolute;
-    top: 29px;
-    float: none;
-    width: 50px;
-    right: 10px;
+.seopro-counter .red{
+    color: #707070 !important;
 }
-
-#modx-resource-pagetitle,
-#modx-resource-longtitle,
-#modx-resource-description {
-    padding-right: 60px;
+.seopro-counter-keywords.green{
+	background: url(../img/thumb-up.png) no-repeat 10px 3px #FBFBFB;
 }
-
-#seopro-resource-alias .seopro-counter-chars,
-#seopro-resource-menutitle .seopro-counter-chars{
+.seopro-counter-keywords.red{
+	background: url(../img/thumb-down.png) no-repeat 10px 4px #FBFBFB;
+}
+#seopro-resource-alias .seopro-counter-chars, #seopro-resource-menutitle .seopro-counter-chars{
 	display: none;
 }
 .seopro-counter-keywords{
@@ -128,6 +135,7 @@
 }
 
 .seopro-counter .allowed {
+    width: 21px;
     display: inline-block;
     text-align: left;
 }
