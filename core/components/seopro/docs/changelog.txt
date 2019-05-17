@@ -1,5 +1,8 @@
 Changelog for SEO Pro.
 
+SEO Pro 2.0.0 pl
+- Release for modx 3
+
 SEO Pro 1.3.0 pl
 ==============
 - Change type of modResource.description to be "text" instead of "varchar". (#74)

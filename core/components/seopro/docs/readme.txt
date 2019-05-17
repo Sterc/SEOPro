@@ -1,9 +1,11 @@
 --------------------
 SEO Pro
 --------------------
-Version: 1.2.2-pl
+Version: 2.0.0-pl
 Author: Sterc <modx@sterc.nl>
 --------------------
+
+Warning: This version is developed for modx 3+
 
 SEO Pro is a MODX Extra developed by Sterc. This Extra offers you guidance in the process of optimising your website for search engines. It enables you to enter focus keywords per page. Based on that input, SEO Pro provides you feedback on the SEO quality of your pagetitle, longtitle, description and alias by checking if the keywords are present.
 

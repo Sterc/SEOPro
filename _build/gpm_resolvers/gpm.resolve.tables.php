@@ -22,9 +22,11 @@ if ($object->xpdo) {
             $modx->addPackage('seopro', $modelPath, null);
 
 
+
             $manager = $modx->getManager();
 
             $manager->createObjectContainer('seoKeywords');
+
 
             break;
     }
