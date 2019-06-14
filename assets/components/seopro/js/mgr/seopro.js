@@ -86,7 +86,7 @@ Ext.extend(seoPro, Ext.Component, {
     },
     addPanel: function() {
         var fp = Ext.getCmp('modx-resource-main-left');
-        fp.insert(5, {
+        fp.insert(4, {
             xtype: 'panel',
             anchor: '100%',
             border: false,
