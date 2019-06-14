@@ -7,7 +7,7 @@ $_lang['seopro.focuskeywords'] = 'Keywords für diese Seite';
 $_lang['seopro.focuskeywords_desc'] = 'durch Komma getrennt, ohne Leerzeichen';
 $_lang['seopro.prevbox'] = 'Google-Vorschau';
 $_lang['seopro.prevbox_yandex'] = 'Yandex-Vorschau';
-$_lang['seopro.emptymetadescription']='<i>Bitte geben Sie eine Beschreibung ein.</i>';
+$_lang['seopro.emptymetadescription']='<i>Bitte geben Sie eine <span class="seopro-google-description--field">Beschreibung</span> ein.</i>';
 $_lang['seopro.branding_text']='This site is optimized with the Sterc seoPro plugin - https://github.com/Sterc/SEOPro.';
 
 $_lang['setting_seopro.delimiter'] = 'Trennzeichen in Google-Vorschau';

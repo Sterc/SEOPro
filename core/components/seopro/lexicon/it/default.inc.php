@@ -8,5 +8,5 @@ $_lang['seopro.focuskeywords'] = 'Focus sulle parole chiave';
 $_lang['seopro.focuskeywords_desc'] = 'Separate da virgole';
 $_lang['seopro.prevbox'] = 'Come verrà visualizzato in Google?';
 $_lang['seopro.prevbox_yandex'] = 'Come verrà visualizzato in Yandex?';
-$_lang['seopro.emptymetadescription']='<i>Please enter a description</i>';
+$_lang['seopro.emptymetadescription']='<i>Please enter a <span class="seopro-google-description--field">description</span></i>';
 $_lang['seopro.branding_text']='This site is optimized with the Sterc seoPro plugin - https://github.com/Sterc/SEOPro.';

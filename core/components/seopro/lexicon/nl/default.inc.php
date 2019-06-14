@@ -7,7 +7,7 @@ $_lang['seopro.focuskeywords'] = 'Focus keywords';
 $_lang['seopro.focuskeywords_desc'] = 'Vul je keywords komma-gescheiden in.';
 $_lang['seopro.prevbox'] = 'Google Preview';
 $_lang['seopro.prevbox_yandex'] = 'Yandex Preview';
-$_lang['seopro.emptymetadescription']='<i>Vul een omschrijving in</i>';
+$_lang['seopro.emptymetadescription']='<i>Vul een <span class="seopro-google-description--field">omschrijving</span> in</i>';
 $_lang['seopro.branding_text']='Deze website is geoptimaliseerd met de Sterc seoPro plugin - https://github.com/Sterc/SEOPro.';
 
 $_lang['setting_seopro.delimiter'] = 'Scheidingsteken in Google/Yandex preview.';

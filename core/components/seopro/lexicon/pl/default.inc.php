@@ -7,7 +7,7 @@ $_lang['seopro.focuskeywords'] = 'Frazy fokusowe';
 $_lang['seopro.focuskeywords_desc'] = 'Wprowadź frazy oddzielone przecinkami (przykład: stół,krzesło)';
 $_lang['seopro.prevbox'] = 'Jak to wygląda w Google?';
 $_lang['seopro.prevbox_yandex'] = 'Jak to wygląda w Yandex?';
-$_lang['seopro.emptymetadescription']='<i>Wprowadź opis aby zobaczyć podgląd</i>';
+$_lang['seopro.emptymetadescription']='<i>Wprowadź <span class="seopro-google-description--field">opis</span> aby zobaczyć podgląd</i>';
 $_lang['seopro.branding_text']='This site is optimized with the Sterc seoPro plugin - https://github.com/Sterc/SEOPro.';
 
 $_lang['setting_seopro.delimiter'] = 'Separator';

@@ -64,7 +64,7 @@ Ext.extend(seoPro, Ext.Component, {
             name: 'keywords',
             id: 'seopro-keywords',
             fieldLabel: _('seopro.focuskeywords'),
-            description: '[[+seoPro.keywords]]',
+            description: _('seopro.focuskeywords_desc'),
             value: seoPro.config.record,
             enableKeyEvents: true,
             anchor: '100%',
@@ -80,13 +80,8 @@ Ext.extend(seoPro, Ext.Component, {
                 }
             }
         });
-        var fieldDesc = new Ext.form.Label({
-            forId: 'pagetitle',
-            text: _('seopro.focuskeywords_desc'),
-            cls: 'desc-under'
-        });
+
         fp.insert(3, field);
-        fp.insert(4, fieldDesc);
         fp.doLayout();
     },
     addPanel: function() {
@@ -227,7 +222,11 @@ Ext.extend(seoPro, Ext.Component, {
                     if (!MODx.isEmpty(seoPro.config.values['introtext']) && !introCheck) {
                         description = seoPro.config.values['introtext'];
                     } else {
+                        var label = Ext.get('modx-resource-description').dom.labels[0].innerText;
+
+                        label       = label.replace(/:$/, '').toLowerCase();
                         description = _('seopro.emptymetadescription');
+                        description = description.replace(/\<span class="seopro-google-description--field"\>(.*)\<\/span\>/, label);
                     }
                 } else {
                     description = seoPro.config.values['description'];

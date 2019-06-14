@@ -98,6 +98,11 @@
 .seopro-counter-keywords{
 	padding-left: 30px;
 }
+
+#seopro-counter-keywords-alias {
+    margin-right: 30px;
+}
+
 .x-btn-seopro button{
 /*	background-image: url(../img/tips.png);
 	background-position: 0px 0px !important;*/
