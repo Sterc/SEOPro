@@ -40,3 +40,9 @@ We greatly value your feedback, feature requests and bug reports. Please issue t
 [5]: https://modx.com/download
 [6]: https://secure.php.net/releases/
 [7]: https://github.com/Sterc/SEOPro
+
+# Free Extra
+This is a free extra and the code is publicly available for you to change. The extra is being actively maintained and you're free to put in pull requests which match our roadmap. Please create an issue if the pull request differs from the roadmap so we can make sure we're on the same page.
+
+Need help? [Approach our support desk for paid premium support.](mailto:service@sterc.com)
+
