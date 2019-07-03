@@ -4,7 +4,7 @@
  */
 $xpdo_meta_map['seoKeywords']= array (
   'package' => 'seopro',
-  'version' => NULL,
+  'version' => null,
   'table' => 'seopro_keywords',
   'extends' => 'xPDOSimpleObject',
   'tableMeta' => 
