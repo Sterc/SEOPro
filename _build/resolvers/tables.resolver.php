@@ -109,7 +109,7 @@ if (!function_exists('alterTable')) {
 
 if ($object->xpdo) {
     switch ($options[xPDOTransport::PACKAGE_ACTION]) {
-        case xPDOTransport::ACTION_UPGRADE:
+        case xPDOTransport::ACTION_INSTALL:
             /** @var modX $modx */
             $modx =& $object->xpdo;
 
