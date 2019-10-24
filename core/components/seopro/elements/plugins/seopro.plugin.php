@@ -6,7 +6,7 @@
  */
 $seoPro = $modx->getService('seopro', 'seoPro', $modx->getOption('seopro.core_path', null, $modx->getOption('core_path') . 'components/seopro/') . 'model/seopro/', $scriptProperties);
 if (!($seoPro instanceof seoPro)) {
-    return '';
+    return;
 }
 
 $disabledTemplates = explode(',', $modx->getOption('seopro.disabledtemplates', null, '0'));
