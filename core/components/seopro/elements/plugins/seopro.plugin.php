@@ -93,6 +93,7 @@ switch ($modx->event->name) {
             seoPro.config.fields = "' . implode(",", array_keys($arrFields)) . '";
             seoPro.config.chars = ' . $modx->toJSON($arrFields) . '
             seoPro.config.url = "' . $url . '";
+            seoPro.config.siteName = "' . (($ctx) ? $ctx->getOption('site_name') : $modx->getOption('site_name')) . '";
         });</script>');
 
         /* include CSS and JS*/
