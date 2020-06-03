@@ -143,7 +143,7 @@ Ext.extend(seoPro, Ext.Component, {
             // console.log(Ext.get('seopro-google-title').length);
             // console.log(Ext.get('seopro-google-title').dom.innerHTML);
             if (seoPro.config.siteNameShow && (field === 'pagetitle' || field === 'longtitle')) {
-                var extra = ' ' + seoPro.config.delimiter + ' ' + MODx.config.site_name;
+                var extra = ' ' + seoPro.config.delimiter + ' ' + seoPro.config.siteName;
                 charCount = charCount + extra.length;
             }
         }
@@ -214,7 +214,7 @@ Ext.extend(seoPro, Ext.Component, {
                         title = seoPro.config.values['longtitle'];
                     }
                     if (seoPro.config.siteNameShow) {
-                        title += ' ' + seoPro.config.delimiter + ' ' + MODx.config.site_name;
+                        title += ' ' + seoPro.config.delimiter + ' ' + seoPro.config.siteName;
                     }
                     Ext.get('seopro-google-title').dom.innerHTML = title;
                 }
