@@ -152,7 +152,7 @@ Ext.extend(seoPro, Ext.Component, {
             keyword = keyword.replace(/^\s+/, '').toLowerCase();
 
             if (keyword) {
-                var counter = Value.toLowerCase().match(new RegExp("(^|[ \s\n\r\t\.,'\(\"\+;!?:\-])" + keyword + "($|[ \s\n\r\t.,'\)\"\+!?:;\-])", 'gim'));
+                var counter = Value.toLowerCase().match(new RegExp("(^|[ \s\n\r\t\.,'\(\"\+;!?:\-])" + seoPro.escapeRegExp(keyword) + "($|[ \s\n\r\t.,'\)\"\+!?:;\-])", 'gim'));
                 // var counter = Value.toLowerCase().match(new RegExp('\\b' + keyword + '\\b', 'g'));
                 if (counter) {
                     keywordCount = keywordCount + counter.length;
@@ -238,6 +238,9 @@ Ext.extend(seoPro, Ext.Component, {
                 Ext.get('seopro-replace-alias').dom.innerHTML = seoPro.config.values['alias'];
                 break;
         }
+    },
+    escapeRegExp: function(string) {
+        return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     }
 });
 Ext.reg('seopro', seoPro);
