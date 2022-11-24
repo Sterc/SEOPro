@@ -44,6 +44,10 @@
       "value": "",
       "area": "general"
     },{
+      "key": "disabledresources",
+      "value": "",
+      "area": "general"
+    },{
       "key": "max_keywords_title",
       "value": "4",
       "area": "general"

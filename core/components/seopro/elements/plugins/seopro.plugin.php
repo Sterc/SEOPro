@@ -10,6 +10,7 @@ if (!($seoPro instanceof seoPro)) {
 }
 
 $disabledTemplates = explode(',', $modx->getOption('seopro.disabledtemplates', null, '0'));
+$disabledResources = explode(',', $modx->getOption('seopro.disabledresources', null, '0'));
 
 switch ($modx->event->name) {
     case 'OnMODXInit':
@@ -33,7 +34,7 @@ switch ($modx->event->name) {
             $template = (string)$_REQUEST['template'];
             $override = true;
         }
-        if (($override && $template === '0') || (!empty($template) && in_array($template, $disabledTemplates))) {
+        if (($override && $template === '0') || (!empty($template) && in_array($template, $disabledTemplates)) || in_array($id, $disabledResources)) {
             break;
         }
         
